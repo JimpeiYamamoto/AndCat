@@ -61,7 +61,7 @@ public final class HomeViewStream: HomeViewStreamType {
             guard let pictureMemory = pictureMemory else {
                 output.question = HomeViewStream.initialTheme.question
                 switch HomeViewStream.initialTheme.category.self {
-                case let .eating(text), let .sleeping(text), let .playing(text):
+                    case let .eating(text), let .sleeping(text), let .playing(text), let .selfie(text), let .trouble(text):
                     output.category = text
                 }
                 return
@@ -69,7 +69,7 @@ public final class HomeViewStream: HomeViewStreamType {
 
             state.pictureMemory = pictureMemory
             switch pictureMemory.theme.category {
-            case let .eating(text), let .sleeping(text), let .playing(text):
+                case let .eating(text), let .sleeping(text), let .playing(text), let .selfie(text) ,let .trouble(text):
                 output.category = text
             }
             output.question = pictureMemory.theme.question

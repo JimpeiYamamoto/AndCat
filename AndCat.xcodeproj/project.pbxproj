@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06E11AF02CB1C022004B51A6 /* CalenderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AED2CB1C021004B51A6 /* CalenderUseCase.swift */; };
+		06E11AF12CB1C022004B51A6 /* PictureMemoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AEE2CB1C021004B51A6 /* PictureMemoryUseCase.swift */; };
 		4B7F006C2CB15D58004059A9 /* CalendarViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */; };
-		4B7F006E2CB1614B004059A9 /* CalenderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006D2CB1614B004059A9 /* CalenderUseCase.swift */; };
 		4B7F00702CB1A661004059A9 /* DateMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */; };
 		F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DEA2CB110930075CBB4 /* AndCatApp.swift */; };
 		F2226DEF2CB110940075CBB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DEE2CB110940075CBB4 /* Assets.xcassets */; };
@@ -32,9 +33,10 @@
 
 /* Begin PBXFileReference section */
 		06E11ADC2CB158BF004B51A6 /* AndCat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AndCat.entitlements; sourceTree = "<group>"; };
-		4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewStream.swift; sourceTree = "<group>"; };
-		4B7F006D2CB1614B004059A9 /* CalenderUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderUseCase.swift; sourceTree = "<group>"; };
 		06E11ADD2CB16E34004B51A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		06E11AED2CB1C021004B51A6 /* CalenderUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderUseCase.swift; sourceTree = "<group>"; };
+		06E11AEE2CB1C021004B51A6 /* PictureMemoryUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureMemoryUseCase.swift; sourceTree = "<group>"; };
+		4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewStream.swift; sourceTree = "<group>"; };
 		4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMemoryView.swift; sourceTree = "<group>"; };
 		F2226DE72CB110930075CBB4 /* AndCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2226DEA2CB110930075CBB4 /* AndCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndCatApp.swift; sourceTree = "<group>"; };
@@ -69,11 +71,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06E11AEC2CB1BF22004B51A6 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		06E11AEF2CB1C021004B51A6 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				06E11AED2CB1C021004B51A6 /* CalenderUseCase.swift */,
+				06E11AEE2CB1C021004B51A6 /* PictureMemoryUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		F2226DDE2CB110930075CBB4 = {
 			isa = PBXGroup;
 			children = (
 				F2226DE92CB110930075CBB4 /* AndCat */,
 				F2226DE82CB110930075CBB4 /* Products */,
+				06E11AEC2CB1BF22004B51A6 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +116,7 @@
 				F2226E002CB111E70075CBB4 /* ViewStream */,
 				F2226DFC2CB111E10075CBB4 /* View */,
 				F2226DEA2CB110930075CBB4 /* AndCatApp.swift */,
+				06E11AEF2CB1C021004B51A6 /* UseCase */,
 				F2226DEE2CB110940075CBB4 /* Assets.xcassets */,
 				F2226DF02CB110940075CBB4 /* Preview Content */,
 			);
@@ -109,15 +129,6 @@
 				F2226DF12CB110940075CBB4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		F2226DF92CB111D80075CBB4 /* UseCase */ = {
-			isa = PBXGroup;
-			children = (
-				F2226DF82CB111D80075CBB4 /* TopViewUseCase.swift */,
-				4B7F006D2CB1614B004059A9 /* CalenderUseCase.swift */,
-			);
-			path = UseCase;
 			sourceTree = "<group>";
 		};
 		F2226DFC2CB111E10075CBB4 /* View */ = {
@@ -137,7 +148,6 @@
 		F2226E002CB111E70075CBB4 /* ViewStream */ = {
 			isa = PBXGroup;
 			children = (
-				F2226DFE2CB111E70075CBB4 /* TopViewStream.swift */,
 				4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */,
 				F2226E252CB1A8DC0075CBB4 /* TopViewStream.swift */,
 				F2226DFF2CB111E70075CBB4 /* ViewStremType.swift */,
@@ -257,12 +267,13 @@
 				F2226E142CB12A4C0075CBB4 /* CalendarView.swift in Sources */,
 				4B7F006C2CB15D58004059A9 /* CalendarViewStream.swift in Sources */,
 				F2226E0A2CB118F90075CBB4 /* PictureMemory.swift in Sources */,
-				4B7F006E2CB1614B004059A9 /* CalenderUseCase.swift in Sources */,
 				F2226E162CB12A600075CBB4 /* MemorialView.swift in Sources */,
 				F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */,
 				F2226E222CB17BAB0075CBB4 /* HomeViewStream.swift in Sources */,
 				F2226E262CB1A8DC0075CBB4 /* TopViewStream.swift in Sources */,
+				06E11AF02CB1C022004B51A6 /* CalenderUseCase.swift in Sources */,
 				F2226DFD2CB111E10075CBB4 /* TopView.swift in Sources */,
+				06E11AF12CB1C022004B51A6 /* PictureMemoryUseCase.swift in Sources */,
 				F2226E192CB1345D0075CBB4 /* ColorExtension.swift in Sources */,
 				4B7F00702CB1A661004059A9 /* DateMemoryView.swift in Sources */,
 				F2226E102CB11C840075CBB4 /* PictureMemoryRepository.swift in Sources */,

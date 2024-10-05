@@ -66,5 +66,5 @@ struct DateMemoryView: View {
 
 #Preview {
     let pictureMemory = CalenderViewStreamModel.PictureMemory(date: Date(), image: UIImage(systemName: "cat")!, theme: .init(category: .eating("eating"), question: "Q: Eating", answer: "A: Eating"))
-    DateMemoryView(pictureMemory: pictureMemory)
+    return DateMemoryView(pictureMemory: pictureMemory)
 }
