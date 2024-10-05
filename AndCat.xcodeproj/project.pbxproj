@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4B7F006C2CB15D58004059A9 /* CalendarViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */; };
 		4B7F006E2CB1614B004059A9 /* CalenderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006D2CB1614B004059A9 /* CalenderUseCase.swift */; };
+		4B7F00702CB1A661004059A9 /* DateMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */; };
 		F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DEA2CB110930075CBB4 /* AndCatApp.swift */; };
 		F2226DEF2CB110940075CBB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DEE2CB110940075CBB4 /* Assets.xcassets */; };
 		F2226DF22CB110940075CBB4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DF12CB110940075CBB4 /* Preview Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewStream.swift; sourceTree = "<group>"; };
 		4B7F006D2CB1614B004059A9 /* CalenderUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderUseCase.swift; sourceTree = "<group>"; };
 		06E11ADD2CB16E34004B51A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMemoryView.swift; sourceTree = "<group>"; };
 		F2226DE72CB110930075CBB4 /* AndCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2226DEA2CB110930075CBB4 /* AndCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndCatApp.swift; sourceTree = "<group>"; };
 		F2226DEE2CB110940075CBB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				F2226E1E2CB143590075CBB4 /* HomeViewComponent */,
 				F2226DFB2CB111E10075CBB4 /* TopView.swift */,
 				F2226E132CB12A4C0075CBB4 /* CalendarView.swift */,
+				4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */,
 				F2226E152CB12A600075CBB4 /* MemorialView.swift */,
 			);
 			path = View;
@@ -270,6 +273,7 @@
 				F2226E222CB17BAB0075CBB4 /* HomeViewStream.swift in Sources */,
 				F2226DFD2CB111E10075CBB4 /* TopView.swift in Sources */,
 				F2226E192CB1345D0075CBB4 /* ColorExtension.swift in Sources */,
+				4B7F00702CB1A661004059A9 /* DateMemoryView.swift in Sources */,
 				F2226E102CB11C840075CBB4 /* PictureMemoryRepository.swift in Sources */,
 				F2226DFA2CB111D80075CBB4 /* TopViewUseCase.swift in Sources */,
 				F2226E122CB12A450075CBB4 /* HomeView.swift in Sources */,

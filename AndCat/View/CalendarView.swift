@@ -22,16 +22,18 @@ struct CalendarView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color(red: 230, green: 234, blue: 237, opacity: 1)
-            ScrollView {
-                VStack(spacing: 10) {
-                    // 各月のカレンダーを表示
-                    ForEach(pastYearMonths.reversed(), id: \.self) { month in
-                        MonthlyCalendarView(selectedDate: month, viewStream: CalenderViewStream.shared)
+        NavigationView {
+            ZStack {
+                Color(hex: "E6EAED")
+                ScrollView {
+                    VStack(spacing: 10) {
+                        // 各月のカレンダーを表示
+                        ForEach(pastYearMonths.reversed(), id: \.self) { month in
+                            MonthlyCalendarView(selectedDate: month, viewStream: CalenderViewStream.shared)
+                        }
                     }
+                    .padding(.horizontal, 10)
                 }
-                .padding(.horizontal, 10)
             }
         }
     }
@@ -52,6 +54,7 @@ struct MonthlyCalendarView<Stream: CalendarViewStreamType>: View {
             // 月名を表示
             HStack {
                 Text("\(monthName)")
+                    .foregroundStyle(Color(hex: "0A3049"))
                     .font(.body)
                     .fontWeight(.bold)
                     .padding(.bottom, 10)
@@ -62,6 +65,7 @@ struct MonthlyCalendarView<Stream: CalendarViewStreamType>: View {
             HStack {
                 ForEach(weekdays, id: \.self) { weekday in
                     Text(weekday)
+                        .foregroundStyle(Color(hex: "0A3049"))
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity)
                 }
@@ -83,13 +87,15 @@ struct MonthlyCalendarView<Stream: CalendarViewStreamType>: View {
                         } else {
                             if let dateDict,
                                let pictureMemory = dateDict[day] {
-                                Image(uiImage: pictureMemory.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 50, height: 50)
-                                
+                                NavigationLink(destination: DateMemoryView(pictureMemory: pictureMemory)) {
+                                    Image(uiImage: pictureMemory.image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50, height: 50)
+                                }
                             }
                             Text("\(day)")
+                                .foregroundStyle(Color(hex: "0A3049"))
                                 .frame(width: 50, height: 50)
                         }
                     }

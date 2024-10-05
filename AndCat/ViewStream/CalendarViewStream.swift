@@ -102,6 +102,17 @@ extension CalenderViewStreamModel {
     }
 }
 
+extension Category {
+    func getString() -> String {
+          switch self {
+          case .eating(let value),
+               .sleeping(let value),
+               .playing(let value):
+              return value
+          }
+    }
+}
+
 extension CalenderViewStream {
     public static let shared = CalenderViewStream(useCase: CalenderViewUseCase.shared)
 }
