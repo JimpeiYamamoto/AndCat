@@ -19,6 +19,7 @@
 		F2226E0A2CB118F90075CBB4 /* PictureMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E092CB118F90075CBB4 /* PictureMemory.swift */; };
 		F2226E0C2CB119170075CBB4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E0B2CB119170075CBB4 /* Theme.swift */; };
 		F2226E0E2CB11A2C0075CBB4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E0D2CB11A2C0075CBB4 /* Category.swift */; };
+		F2226E102CB11C840075CBB4 /* PictureMemoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E0F2CB11C840075CBB4 /* PictureMemoryRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		F2226E092CB118F90075CBB4 /* PictureMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureMemory.swift; sourceTree = "<group>"; };
 		F2226E0B2CB119170075CBB4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F2226E0D2CB11A2C0075CBB4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		F2226E0F2CB11C840075CBB4 /* PictureMemoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureMemoryRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				F2226E042CB112340075CBB4 /* PokemonRepository.swift */,
+				F2226E0F2CB11C840075CBB4 /* PictureMemoryRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				F2226E0A2CB118F90075CBB4 /* PictureMemory.swift in Sources */,
 				F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */,
 				F2226DFD2CB111E10075CBB4 /* TopView.swift in Sources */,
+				F2226E102CB11C840075CBB4 /* PictureMemoryRepository.swift in Sources */,
 				F2226DFA2CB111D80075CBB4 /* TopViewUseCase.swift in Sources */,
 				F2226E0E2CB11A2C0075CBB4 /* Category.swift in Sources */,
 				F2226E052CB112340075CBB4 /* PokemonRepository.swift in Sources */,
