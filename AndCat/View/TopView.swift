@@ -16,7 +16,7 @@ struct TopListView<Stream: TopViewStreamType>: View {
     var body: some View {
         NavigationStack {
             TabView {
-                HomeView()
+                HomeView(viewStream: HomeViewStream.shared)
                     .tabItem { Text("Home") }
                 CalendarView()
                     .tabItem { Text("Calendar") }

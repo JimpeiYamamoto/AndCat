@@ -1,9 +1,11 @@
 import SwiftUI
 
-struct HomeView: View {
-    @State var takenImage: UIImage? = nil
-    @State var shouldShowCameraView: Bool = false
-    @State var isNavigationActive: Bool = false
+struct HomeView<Stream: HomeViewStreamType>: View {
+    @StateObject var viewStream: Stream
+
+    public init(viewStream: Stream) {
+        _viewStream = StateObject(wrappedValue: viewStream)
+    }
 
     var body: some View {
         VStack(alignment: .center, spacing: 5) {
@@ -17,26 +19,22 @@ struct HomeView: View {
             }
             .padding(.top)
             VStack(alignment: .center, spacing: 5) {
-                Text("10/5 (土)")
+                Text(viewStream.output.dateLabel)
                     .foregroundStyle(Color.black)
                     .frame(maxWidth: .infinity)
                     .padding(.top)
-                Text("# 猫が落ちてました")
+                Text(viewStream.output.question ?? "")
                     .foregroundStyle(Color.black)
                     .frame(maxWidth: .infinity)
                     .bold()
-                AsyncImage(
-                    url: URL(string: "https://t3.ftcdn.net/jpg/02/36/99/22/360_F_236992283_sNOxCVQeFLd5pdqaKGh8DRGMZy7P4XKm.jpg")!
-                ) { image in
-                    image
+                if let takenImage = viewStream.output.takenImage {
+                    Image(uiImage: takenImage)
                         .resizable()
                         .scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .padding()
-                } placeholder: {
-                    ProgressView("読み見込み中")
                 }
-                Text("コメントコメントコメントコメントコメントコメントコメントコメント")
+                Text(viewStream.output.answer ?? "")
                     .foregroundStyle(Color.black)
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal)
@@ -46,26 +44,35 @@ struct HomeView: View {
             .background(Color(type: .offwhite))
             .clipShape(RoundedRectangle(cornerRadius: 10), style: FillStyle())
             .onTapGesture {
-                shouldShowCameraView.toggle()
+                Task {
+                    await viewStream.action(input: .didTapThemeView)
+                }
             }
 
             Spacer()
             // deprecatedでくやしい
             NavigationLink(
-                destination: TakenResultView(takenImage: takenImage),
-                isActive: $isNavigationActive
+                destination: TakenResultView(takenImage: viewStream.output.takenImage),
+                isActive: $viewStream.output.isNavigationActive
             ) { EmptyView() }
         }
         .padding(.horizontal)
-        .fullScreenCover(isPresented: $shouldShowCameraView) {
-            CameraView(image: $takenImage)
+        .fullScreenCover(isPresented: $viewStream.output.shouldShowCameraView) {
+            CameraView(image: $viewStream.output.takenImage)
                 .onDisappear {
-                    if takenImage != nil {
-                        isNavigationActive.toggle()
+                    if viewStream.output.takenImage != nil {
+                        Task {
+                            await viewStream.action(input: .onCameraViewDisappear)
+                        }
                     }
                 }
         }
         .background(Color(type: .backGround))
+        .onAppear {
+            Task {
+                await viewStream.action(input: .onAppear)
+            }
+        }
     }
 }
 
@@ -76,5 +83,5 @@ extension HomeView {
 }
 
 #Preview {
-    HomeView()
+    HomeView(viewStream: HomeViewStream.shared)
 }
