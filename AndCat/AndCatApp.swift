@@ -11,7 +11,7 @@ import SwiftUI
 struct AndCatApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TopListView(viewStream: TopViewStream.shared)
         }
     }
 }
