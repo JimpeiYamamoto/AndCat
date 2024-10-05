@@ -152,49 +152,6 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                     Spacer()
                 }
             }
-            
-                HStack {
-                    Text("今日のお題")
-                        .foregroundStyle(Color.black)
-                        .font(.title2)
-                        .bold()
-                        .padding(.bottom)
-                    Spacer()
-                }
-                .padding(.top)
-                VStack(alignment: .center, spacing: 5) {
-                    Text("10/5 (土)")
-                        .foregroundStyle(Color.black)
-                        .frame(maxWidth: .infinity)
-                        .padding(.top)
-                    Text("# 猫が落ちてました")
-                        .foregroundStyle(Color.black)
-                        .frame(maxWidth: .infinity)
-                        .bold()
-                    AsyncImage(
-                        url: URL(string: "https://t3.ftcdn.net/jpg/02/36/99/22/360_F_236992283_sNOxCVQeFLd5pdqaKGh8DRGMZy7P4XKm.jpg")!
-                    ) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                            .padding()
-                    } placeholder: {
-                        ProgressView("読み見込み中")
-                    }
-                    Text("コメントコメントコメントコメントコメントコメントコメントコメント")
-                        .foregroundStyle(Color.black)
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                }
-                .background(Color(type: .offwhite))
-                .clipShape(RoundedRectangle(cornerRadius: 10), style: FillStyle())
-                .onTapGesture {
-                    shouldShowCameraView.toggle()
-                }
-                .background(RectangleGetter(rect: $rect))
 
             if viewStream.output.answer != nil {
                 Button(action: {
@@ -226,47 +183,4 @@ public struct FromHomeViewPayLoad {
 
 #Preview {
     HomeView(viewStream: HomeViewStream.shared)
-}
-
-// https://qiita.com/tsuzuki817/items/a3d2470ba9df07ed0d99
-struct RectangleGetter: View {
-    @Binding var rect: CGRect
-    
-    var body: some View {
-        GeometryReader { geometry in
-            self.createView(proxy: geometry)
-        }
-    }
-    
-    func createView(proxy: GeometryProxy) -> some View {
-        DispatchQueue.main.async {
-            self.rect = proxy.frame(in: .global)
-        }
-        return Rectangle().fill(Color.clear)
-    }
-}
-
-extension UIView {
-    func getImage(rect: CGRect) -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: rect)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
-    }
-}
- 
-extension UIImage {
-    func roundedCorners(radius: CGFloat) -> UIImage {
-        
-        return UIGraphicsImageRenderer(size: self.size).image { context in
-            
-            let rect = context.format.bounds
-            // Rectを角丸にする
-            let roundedPath = UIBezierPath(roundedRect: rect,
-                                           cornerRadius: radius)
-            roundedPath.addClip()
-            // UIImageを描画
-            draw(in: rect)
-        }
-    }
 }
