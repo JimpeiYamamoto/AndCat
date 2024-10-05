@@ -52,7 +52,7 @@ struct TopListView<Stream: TopViewStreamType>: View {
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text(selectedTabTitle)
-                            .foregroundStyle(Color.black)
+                            .foregroundStyle(Color(hex: "0A3049"))
                             .bold()
                     }
                 }
