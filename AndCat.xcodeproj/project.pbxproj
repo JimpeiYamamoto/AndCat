@@ -16,6 +16,9 @@
 		F2226E022CB111E70075CBB4 /* ViewStremType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DFF2CB111E70075CBB4 /* ViewStremType.swift */; };
 		F2226E052CB112340075CBB4 /* PokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E042CB112340075CBB4 /* PokemonRepository.swift */; };
 		F2226E082CB1129E0075CBB4 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E072CB1129E0075CBB4 /* Pokemon.swift */; };
+		F2226E0A2CB118F90075CBB4 /* PictureMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E092CB118F90075CBB4 /* PictureMemory.swift */; };
+		F2226E0C2CB119170075CBB4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E0B2CB119170075CBB4 /* Theme.swift */; };
+		F2226E0E2CB11A2C0075CBB4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E0D2CB11A2C0075CBB4 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		F2226DFF2CB111E70075CBB4 /* ViewStremType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStremType.swift; sourceTree = "<group>"; };
 		F2226E042CB112340075CBB4 /* PokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepository.swift; sourceTree = "<group>"; };
 		F2226E072CB1129E0075CBB4 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		F2226E092CB118F90075CBB4 /* PictureMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureMemory.swift; sourceTree = "<group>"; };
+		F2226E0B2CB119170075CBB4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		F2226E0D2CB11A2C0075CBB4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				F2226E072CB1129E0075CBB4 /* Pokemon.swift */,
+				F2226E092CB118F90075CBB4 /* PictureMemory.swift */,
+				F2226E0B2CB119170075CBB4 /* Theme.swift */,
+				F2226E0D2CB11A2C0075CBB4 /* Category.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -192,12 +201,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2226E0C2CB119170075CBB4 /* Theme.swift in Sources */,
 				F2226E082CB1129E0075CBB4 /* Pokemon.swift in Sources */,
 				F2226E022CB111E70075CBB4 /* ViewStremType.swift in Sources */,
 				F2226E012CB111E70075CBB4 /* TopViewStream.swift in Sources */,
+				F2226E0A2CB118F90075CBB4 /* PictureMemory.swift in Sources */,
 				F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */,
 				F2226DFD2CB111E10075CBB4 /* TopView.swift in Sources */,
 				F2226DFA2CB111D80075CBB4 /* TopViewUseCase.swift in Sources */,
+				F2226E0E2CB11A2C0075CBB4 /* Category.swift in Sources */,
 				F2226E052CB112340075CBB4 /* PokemonRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
