@@ -2,21 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict/>
 	</array>
-	<key>CFBundleIdentifier</key>
-	<string></string>
-	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIColorName</key>
-		<string>SplushBackground</string>
-		<key>UIImageName</key>
-		<string>splush</string>
-	</dict>
 	<key>FacebookAppID</key>
 	<string>${FACEBOOK_APP_ID}</string>
 	<key>FacebookClientToken</key>
@@ -27,5 +16,12 @@
 	<array>
 		<string>instagram-stories</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>SplushBackground</string>
+		<key>UIImageName</key>
+		<string>splush</string>
+	</dict>
 </dict>
 </plist>

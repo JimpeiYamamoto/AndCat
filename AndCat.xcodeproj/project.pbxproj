@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06E11AF02CB1C022004B51A6 /* CalenderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AED2CB1C021004B51A6 /* CalenderUseCase.swift */; };
-		06E11AF12CB1C022004B51A6 /* PictureMemoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AEE2CB1C021004B51A6 /* PictureMemoryUseCase.swift */; };
-		4B7F006C2CB15D58004059A9 /* CalendarViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */; };
-		4B7F00702CB1A661004059A9 /* DateMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */; };
 		06E11AE02CB18624004B51A6 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 06E11ADF2CB18624004B51A6 /* FacebookAEM */; };
 		06E11AE22CB18624004B51A6 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 06E11AE12CB18624004B51A6 /* FacebookBasics */; };
 		06E11AE42CB18624004B51A6 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 06E11AE32CB18624004B51A6 /* FacebookCore */; };
 		06E11AEA2CB18668004B51A6 /* InstagramRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AE92CB18668004B51A6 /* InstagramRepository.swift */; };
+		06E11AF02CB1C022004B51A6 /* CalenderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AED2CB1C021004B51A6 /* CalenderUseCase.swift */; };
+		06E11AF12CB1C022004B51A6 /* PictureMemoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AEE2CB1C021004B51A6 /* PictureMemoryUseCase.swift */; };
+		4B7F006C2CB15D58004059A9 /* CalendarViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */; };
+		4B7F00702CB1A661004059A9 /* DateMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */; };
 		F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DEA2CB110930075CBB4 /* AndCatApp.swift */; };
 		F2226DEF2CB110940075CBB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DEE2CB110940075CBB4 /* Assets.xcassets */; };
 		F2226DF22CB110940075CBB4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DF12CB110940075CBB4 /* Preview Assets.xcassets */; };
@@ -38,12 +38,12 @@
 /* Begin PBXFileReference section */
 		06E11ADC2CB158BF004B51A6 /* AndCat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AndCat.entitlements; sourceTree = "<group>"; };
 		06E11ADD2CB16E34004B51A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		06E11AE92CB18668004B51A6 /* InstagramRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramRepository.swift; sourceTree = "<group>"; };
+		06E11AEB2CB192DB004B51A6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		06E11AED2CB1C021004B51A6 /* CalenderUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderUseCase.swift; sourceTree = "<group>"; };
 		06E11AEE2CB1C021004B51A6 /* PictureMemoryUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureMemoryUseCase.swift; sourceTree = "<group>"; };
 		4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewStream.swift; sourceTree = "<group>"; };
 		4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMemoryView.swift; sourceTree = "<group>"; };
-		06E11AE92CB18668004B51A6 /* InstagramRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramRepository.swift; sourceTree = "<group>"; };
-		06E11AEB2CB192DB004B51A6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		F2226DE72CB110930075CBB4 /* AndCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2226DEA2CB110930075CBB4 /* AndCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndCatApp.swift; sourceTree = "<group>"; };
 		F2226DEE2CB110940075CBB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -447,12 +447,13 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yjim.AndCat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yjim.AndCat2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -479,12 +480,13 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yjim.AndCat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yjim.AndCat2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
