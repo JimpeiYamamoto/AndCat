@@ -18,7 +18,8 @@ public final class TakenResultViewStream: TakenResultViewStreamType {
 
     @Published public var output = TakenResultViewStreamModel.Output(
         typedAnswer: "",
-        dateLabel: ""
+        dateLabel: "",
+        category: nil
     )
 
     @MainActor
@@ -47,7 +48,8 @@ public final class TakenResultViewStream: TakenResultViewStreamType {
                 typedAnswer: payload.pictureMemory.theme.answer,
                 dateLabel: payload.dateLabel,
                 takenImage: payload.pictureMemory.image,
-                question: payload.pictureMemory.theme.question
+                question: payload.pictureMemory.theme.question,
+                category: payload.pictureMemory.theme.category
             )
         }
     }
@@ -64,6 +66,7 @@ public enum TakenResultViewStreamModel {
         public var dateLabel: String
         public var takenImage: UIImage?
         public var question: String?
+        public var category: Category?
     }
 
     public struct State {

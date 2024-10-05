@@ -5,6 +5,14 @@ struct TakenResultView<Stream: TakenResultViewStreamType>: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewStream: Stream
     public let payLoad: FromHomeViewPayLoad
+    
+    var todaysTopic: String {
+        guard let category = viewStream.output.category else { return "" }
+        switch category {
+            case .eating(let title), .playing(let title),  .sleeping(let title):
+                return title
+        }
+    }
 
     public init(viewStream: Stream, payload: FromHomeViewPayLoad) {
         self.payLoad = payload
@@ -17,19 +25,21 @@ struct TakenResultView<Stream: TakenResultViewStreamType>: View {
                 Image(uiImage: takenImage)
                     .resizable()
                     .scaledToFit()
+                    .cornerRadius(8)
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal, 30)
             }
-            Text(viewStream.output.question ?? "")
-                .foregroundStyle(Color.black)
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
-                    .foregroundStyle(Color(type: .offwhite))
-                    .padding(.horizontal, 20)
-                TextField("", text: $viewStream.output.typedAnswer)
-                    .font(.system(size: 18))
-                    .foregroundStyle(Color.black)
-                    .padding(.horizontal, 30)
+                    .foregroundStyle(Color(hex: "DCE0E3"))
+                TextField(
+                    "",
+                    text: $viewStream.output.typedAnswer,
+                    prompt: Text("Q. " + (viewStream.output.question ?? "")
+                                )
+                    .foregroundStyle(Color(hex: "787878"))
+                    )
+                .padding(.horizontal, 10)
             }
             .frame(height: 50)
             Button(action: {
@@ -38,47 +48,53 @@ struct TakenResultView<Stream: TakenResultViewStreamType>: View {
                     presentationMode.wrappedValue.dismiss()
                 }
             }, label: {
-                HStack {
-                    Spacer()
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
-                            .foregroundStyle(Color.white)
+                            .foregroundStyle(Color(hex: "0A3049"))
                         Text("完了")
-                            .foregroundStyle(Color.black)
+                            .foregroundStyle(Color.white)
+                            .font(.system(size: 17))
+                            .fontWeight(.bold)
                     }
-                    .frame(width: 100, height: 40)
-                    .padding(.trailing, 30)
-                }
-            })
+                    .frame(height: 44)
+            }
+            )
             .frame(height: 50)
             Spacer()
         }
+        .padding(.horizontal, 16)
         .onAppear(perform: {
             Task {
                 await viewStream.action(input: .onAppear(self.payLoad))
             }
         })
         .padding(.top)
-        .background(Color(type: .backGround))
+        .background(Color(hex: "E6EAED"))
+        .navigationTitle(todaysTopic)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarBackground(.white, for: .navigationBar)
     }
 }
 
 #Preview {
-    TakenResultView(
-        viewStream: TakenResultViewStream(
-            pictureMemoryRepository: PictureMemoryRepository.shared
-        ),
-        payload: .init(
-            pictureMemory: .init(
-                date: Date(),
-                image: UIImage(systemName: "star")!,
-                theme: .init(
-                    category: .playing("猫が落ちてました"),
-                    question: "様子は？",
-                    answer: "かわいい"
-                )
+    NavigationStack {
+        TakenResultView(
+            viewStream: TakenResultViewStream(
+                pictureMemoryRepository: PictureMemoryRepository.shared
             ),
-            dateLabel: "10/5 土"
+            payload: .init(
+                pictureMemory: .init(
+                    date: Date(),
+                    image: UIImage(systemName: "star")!,
+                    theme: .init(
+                        category: .playing("猫が落ちてました"),
+                        question: "様子は？",
+                        answer: ""
+                    )
+                ),
+                dateLabel: "10/5 土"
+            )
         )
-    )
+    }
 }
