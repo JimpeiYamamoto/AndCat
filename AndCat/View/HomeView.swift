@@ -12,7 +12,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
             VStack(alignment: .center, spacing: 5) {
                 HStack {
                     Text("今日のお題")
-                        .foregroundStyle(Color.black)
+                        .foregroundStyle(Color(hex: "0A3049"))
                         .font(.system(size: 16))
                         .bold()
                         .padding(.bottom)
@@ -22,18 +22,18 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 .padding(.top)
 
                 firstSectionView()
-                    .padding(.horizontal, 16)
-                    .background(Color(type: .offwhite))
+                    .background(Color(hex: "E6EAED"))
                     .clipShape(RoundedRectangle(cornerRadius: 10), style: FillStyle())
                     .onTapGesture {
                         Task {
                             await viewStream.action(input: .didTapThemeView)
                         }
                     }
+                    .padding(.horizontal, 16)
 
                 HStack {
                     Text("カテゴリ")
-                        .foregroundStyle(Color.black)
+                        .foregroundStyle(Color(hex: "0A3049"))
                         .font(.system(size: 16))
                         .bold()
                         .padding(.bottom)
@@ -90,7 +90,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                         }
                     }
             }
-            .background(Color(type: .backGround))
+            .background(Color(hex: "DCE0E3"))
             .onAppear {
                 Task {
                     await viewStream.action(input: .onAppear)
@@ -98,7 +98,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
             }
         }
         .padding(.horizontal, 16)
-        .background(Color(type: .backGround))
+        .background(Color(hex: "DCE0E3"))
         .scrollContentBackground(.hidden)
     }
 
@@ -111,7 +111,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 .padding(.top, 8)
             Text(title)
                 .font(.system(size: 12))
-                .foregroundStyle(Color.black)
+                .foregroundStyle(Color(hex: "E6EAED"))
                 .padding(.bottom, 8)
         }
         .background(Color(type: .offwhite))
@@ -123,14 +123,14 @@ struct HomeView<Stream: HomeViewStreamType>: View {
             HStack {
                 Spacer()
                 Text(viewStream.output.dateLabel)
-                    .foregroundStyle(Color.black)
+                    .foregroundStyle(Color(hex: "0A3049"))
                     .padding(.top, 16)
                 Spacer()
             }
             .padding(.horizontal, 16)
 
             Text(viewStream.output.category)
-                .foregroundStyle(Color.black)
+                .foregroundStyle(Color(hex: "0A3049"))
                 .bold()
                 .padding(.bottom, viewStream.output.takenImage == nil ? 16 : 0)
 
@@ -161,7 +161,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 }, label: {
                     Text("再撮影する")
                         .font(.system(size: 14))
-                        .foregroundStyle(Color.black)
+                        .foregroundStyle(Color(hex: "0A3049"))
                         .underline()
                 })
                 .padding(.bottom)
