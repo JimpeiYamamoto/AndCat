@@ -88,7 +88,7 @@ struct MonthlyCalendarView<Stream: CalendarViewStreamType>: View {
                             if let dateDict,
                                let pictureMemory = dateDict[day] {
                                 NavigationLink(destination: DateMemoryView(pictureMemory: pictureMemory)) {
-                                    Image("cat")
+                                    Image(uiImage: pictureMemory.image)
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(height: 50)
