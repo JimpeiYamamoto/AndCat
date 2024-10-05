@@ -31,6 +31,7 @@ struct TopListView<Stream: TopViewStreamType>: View {
                     Image("icon03").renderingMode(.template)
                     }
             }
+            .accentColor(Color(hex: "0A3049"))
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("お題")
