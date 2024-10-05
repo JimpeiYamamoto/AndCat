@@ -107,7 +107,9 @@ extension Category {
           switch self {
           case .eating(let value),
                .sleeping(let value),
-               .playing(let value):
+               .playing(let value),
+               .selfie(let value),
+               .trouble(let value):
               return value
           }
     }
