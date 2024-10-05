@@ -8,85 +8,163 @@ struct HomeView<Stream: HomeViewStreamType>: View {
     }
 
     var body: some View {
-        VStack(alignment: .center, spacing: 5) {
-            HStack {
-                Text("今日のお題")
-                    .foregroundStyle(Color.black)
-                    .font(.title2)
-                    .bold()
-                    .padding(.bottom)
-                Spacer()
-            }
-            .padding(.top)
+        ScrollView {
             VStack(alignment: .center, spacing: 5) {
-                Text(viewStream.output.dateLabel)
-                    .foregroundStyle(Color.black)
-                    .frame(maxWidth: .infinity)
-                    .padding(.top)
-                Text(viewStream.output.question ?? "")
-                    .foregroundStyle(Color.black)
-                    .frame(maxWidth: .infinity)
-                    .bold()
-                if let takenImage = viewStream.output.takenImage {
-                    Image(uiImage: takenImage)
-                        .resizable()
-                        .scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                        .padding()
+                HStack {
+                    Text("今日のお題")
+                        .foregroundStyle(Color.black)
+                        .font(.system(size: 16))
+                        .bold()
+                        .padding(.bottom)
+                        .padding(.leading, 8)
+                    Spacer()
                 }
-                Text(viewStream.output.answer ?? "")
-                    .foregroundStyle(Color.black)
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
-                    .padding(.bottom)
+                .padding(.top)
 
-            }
-            .background(Color(type: .offwhite))
-            .clipShape(RoundedRectangle(cornerRadius: 10), style: FillStyle())
-            .onTapGesture {
-                Task {
-                    await viewStream.action(input: .didTapThemeView)
-                }
-            }
-
-            Spacer()
-            // deprecatedでくやしい
-            if let takenImage = viewStream.output.takenImage {
-                NavigationLink(
-                    destination: TakenResultView(
-                        viewStream: TakenResultViewStream.shared,
-                        payload: .init(
-                            pictureMemory: .init(
-                                date: viewStream.state.pictureMemory.date,
-                                image: takenImage,
-                                theme: .init(
-                                    category: viewStream.state.pictureMemory.theme.category,
-                                    question: viewStream.state.pictureMemory.theme.question,
-                                    answer: ""
-                                )
-                            ),
-                            dateLabel: viewStream.output.dateLabel
-                        )
-                    ),
-                    isActive: $viewStream.output.isNavigationActive
-                ) { EmptyView() }
-            }
-        }
-        .padding(.horizontal)
-        .fullScreenCover(isPresented: $viewStream.output.shouldShowCameraView) {
-            CameraView(image: $viewStream.output.takenImage)
-                .onDisappear {
-                    if viewStream.output.takenImage != nil {
+                firstSectionView()
+                    .padding(.horizontal, 16)
+                    .background(Color(type: .offwhite))
+                    .clipShape(RoundedRectangle(cornerRadius: 10), style: FillStyle())
+                    .onTapGesture {
                         Task {
-                            await viewStream.action(input: .onCameraViewDisappear)
+                            await viewStream.action(input: .didTapThemeView)
                         }
                     }
+
+                HStack {
+                    Text("カテゴリ")
+                        .foregroundStyle(Color.black)
+                        .font(.system(size: 16))
+                        .bold()
+                        .padding(.bottom)
+                        .padding(.leading, 8)
+                    Spacer()
                 }
+                .padding(.top)
+
+                HStack(spacing: 20) {
+                    secondSectionView(image: UIImage(named: "eating")!, title: "ごはん")
+                    secondSectionView(image: UIImage(named: "sleeping")!, title: "おひるね")
+                    secondSectionView(image: UIImage(named: "playing")!, title: "あそび")
+                }
+                .padding(.bottom, 16)
+                .padding(.horizontal, 16)
+
+                HStack(spacing: 20) {
+                    secondSectionView(image: UIImage(named: "trouble")!, title: "トラブル")
+                    secondSectionView(image: UIImage(named: "selfie")!, title: "セルフィー")
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
+
+                // deprecatedでくやしい
+                if let takenImage = viewStream.output.takenImage {
+                    NavigationLink(
+                        destination: TakenResultView(
+                            viewStream: TakenResultViewStream.shared,
+                            payload: .init(
+                                pictureMemory: .init(
+                                    date: viewStream.state.pictureMemory.date,
+                                    image: takenImage,
+                                    theme: .init(
+                                        category: viewStream.state.pictureMemory.theme.category,
+                                        question: viewStream.state.pictureMemory.theme.question,
+                                        answer: ""
+                                    )
+                                ),
+                                dateLabel: viewStream.output.dateLabel
+                            )
+                        ),
+                        isActive: $viewStream.output.isNavigationActive
+                    ) { EmptyView() }
+                }
+            }
+            .padding(.horizontal, 16)
+            .fullScreenCover(isPresented: $viewStream.output.shouldShowCameraView) {
+                CameraView(image: $viewStream.output.takenImage)
+                    .onDisappear {
+                        if viewStream.output.takenImage != nil {
+                            Task {
+                                await viewStream.action(input: .onCameraViewDisappear)
+                            }
+                        }
+                    }
+            }
+            .background(Color(type: .backGround))
+            .onAppear {
+                Task {
+                    await viewStream.action(input: .onAppear)
+                }
+            }
         }
+        .padding(.horizontal, 16)
         .background(Color(type: .backGround))
-        .onAppear {
-            Task {
-                await viewStream.action(input: .onAppear)
+        .scrollContentBackground(.hidden)
+    }
+
+    func secondSectionView(image: UIImage, title: String) -> some View {
+        VStack(alignment: .center, spacing: 0) {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 110, height: 64)
+                .padding(.top, 8)
+            Text(title)
+                .font(.system(size: 12))
+                .foregroundStyle(Color.black)
+                .padding(.bottom, 8)
+        }
+        .background(Color(type: .offwhite))
+        .clipShape(RoundedRectangle(cornerRadius: 15), style: FillStyle())
+    }
+
+    func firstSectionView() -> some View {
+        VStack(alignment: .center, spacing: 16) {
+            HStack {
+                Spacer()
+                Text(viewStream.output.dateLabel)
+                    .foregroundStyle(Color.black)
+                    .padding(.top, 16)
+                Spacer()
+            }
+            .padding(.horizontal, 16)
+
+            Text(viewStream.output.category)
+                .foregroundStyle(Color.black)
+                .bold()
+                .padding(.bottom, viewStream.output.takenImage == nil ? 16 : 0)
+
+            if let takenImage = viewStream.output.takenImage {
+                Image(uiImage: takenImage)
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .padding(.horizontal, 16)
+            }
+
+            if let answer = viewStream.output.answer {
+                HStack {
+                    Text(answer)
+                        .foregroundStyle(Color(type: .captionGray))
+                        .font(.system(size: 14))
+                        .frame(alignment: .leading)
+                        .padding(.horizontal, 32)
+                    Spacer()
+                }
+            }
+
+            if viewStream.output.answer != nil {
+                Button(action: {
+                    Task {
+                        await viewStream.action(input: .didTapThemeView)
+                    }
+                }, label: {
+                    Text("再撮影する")
+                        .font(.system(size: 14))
+                        .foregroundStyle(Color.black)
+                        .underline()
+                })
+                .padding(.bottom)
             }
         }
     }

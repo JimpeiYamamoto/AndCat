@@ -8,89 +8,24 @@ where Output == TopViewStreamModel.Output,
 
 public final class TopViewStream: TopViewStreamType {
 
-    private let useCase: TopViewUseCaseType
+    @Published public var output = TopViewStreamModel.Output()
 
-    @Published public var output = TopViewStreamModel.Output(
-        pokemon: nil,
-        isPresentLoadingView: false,
-        isPresentErrorView: false
-    )
-
-    public var state = TopViewStreamModel.State(fetchedPokemonsCount: 0)
-
-    public init(useCase: TopViewUseCaseType) {
-        self.useCase = useCase
-    }
+    public var state = TopViewStreamModel.State()
 
     @MainActor
     public func action(
         input: TopViewStreamModel.Input
-    ) async {
-        switch input {
-        case .onAppear:
-            output.isPresentLoadingView = true
-            defer {
-                output.isPresentLoadingView = false
-            }
-
-            // 非同期処理のみバックグランドスレッドで実行するように指定
-            let fetchResult = await Task.detached(priority: .background) {
-                await self.useCase.fetchPokemonList(
-                    offset: self.state.fetchedPokemonsCount
-                )
-            }.value
-
-            switch fetchResult {
-            case let .success(pokemon):
-                output.isPresentErrorView = false
-                output.pokemon = .init(id: 0, name: pokemon.name)
-                state.fetchedPokemonsCount = 1
-            case .showErrorView:
-                output.isPresentErrorView = true
-            }
-        }
-    }
+    ) async {}
 }
 
 public enum TopViewStreamModel {
-    // viewからの得られるイベントを管理するenum
-    public enum Input {
-        case onAppear
-    }
+    public enum Input {}
 
-    // Viewへ描画する値を管理するStruct
-    public struct Output {
-        public var pokemon: Pokemon?
-        public var isPresentLoadingView: Bool
-        public var isPresentErrorView: Bool
+    public struct Output {}
 
-        public init(
-            pokemon: Pokemon?,
-            isPresentLoadingView: Bool,
-            isPresentErrorView: Bool
-        ) {
-            self.pokemon = pokemon
-            self.isPresentLoadingView = isPresentLoadingView
-            self.isPresentErrorView = isPresentErrorView
-        }
-    }
-
-   public struct State {
-        public var fetchedPokemonsCount: Int
-
-        public init(fetchedPokemonsCount: Int) {
-            self.fetchedPokemonsCount = fetchedPokemonsCount
-        }
-    }
-}
-
-extension TopViewStreamModel {
-    public struct Pokemon: Identifiable {
-        public let id: Int
-        let name: String
-    }
+   public struct State {}
 }
 
 extension TopViewStream {
-    public static let shared = TopViewStream(useCase: TopViewUseCase.shared)
+    public static let shared = TopViewStream()
 }
