@@ -79,59 +79,7 @@ struct MemorialView: View {
     @State private var currentMemoryIndex: Int = 0
     @State private var progress: CGFloat = 0.0
     @State private var timer: Timer? = nil
-
-    // モックデータの作成
-    let memories: [String: [PictureMemoryModel]] = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-
-        // 画像を読み込む（アセットから）
-        guard let image1 = UIImage(named: "アートボード 1"),
-              let image2 = UIImage(named: "アートボード 2"),
-              let image3 = UIImage(named: "アートボード 3") else {
-            fatalError("画像の読み込みに失敗しました。")
-        }
-
-        // カテゴリーごとのモックデータを作成
-        let eatingMemories = [
-            PictureMemoryModel(date: formatter.date(from: "2022/01/01")!, image: image1, theme: ThemeModel(category: .eating("#今日のお昼ご飯"), question: "好きな食べ物は？", answer: "大好きなカツオのキャットフード")),
-            PictureMemoryModel(date: formatter.date(from: "2022/02/01")!, image: image2, theme: ThemeModel(category: .eating("食事"), question: "苦手な食べ物は？", answer: "散歩の後の　CIAOちゅ～る　とりささみ！"))
-        ]
-
-        let sleepingMemories = [
-            PictureMemoryModel(date: formatter.date(from: "2022/03/01")!, image: image1, theme: ThemeModel(category: .sleeping("#ご褒美をあげよう"), question: "よく見る夢は？", answer: "空を飛ぶ")),
-            PictureMemoryModel(date: formatter.date(from: "2022/04/01")!, image: image2, theme: ThemeModel(category: .sleeping("睡眠"), question: "寝る前の習慣は？", answer: "読書"))
-        ]
-
-        let playingMemories = [
-            PictureMemoryModel(date: formatter.date(from: "2022/05/01")!, image: image1, theme: ThemeModel(category: .playing("遊び"), question: "好きなゲームは？", answer: "チェス")),
-            PictureMemoryModel(date: formatter.date(from: "2022/06/01")!, image: image2, theme: ThemeModel(category: .playing("遊び"), question: "趣味は？", answer: "ギター"))
-        ]
-
-        let troubleMemories = [
-            PictureMemoryModel(date: formatter.date(from: "2022/07/01")!, image: image1, theme: ThemeModel(category: .trouble("トラブル"), question: "最近困ったことは？", answer: "パソコンが壊れた")),
-            PictureMemoryModel(date: formatter.date(from: "2022/08/01")!, image: image3, theme: ThemeModel(category: .trouble("トラブル"), question: "苦労した経験は？", answer: "迷子になった"))
-        ]
-
-        let selfieMemories = [
-            PictureMemoryModel(date: formatter.date(from: "2022/09/01")!, image: image2, theme: ThemeModel(category: .selfie("自撮り"), question: "お気に入りの写真は？", answer: "友達と撮った写真")),
-            PictureMemoryModel(date: formatter.date(from: "2022/10/01")!, image: image3, theme: ThemeModel(category: .selfie("自撮り"), question: "最近の自撮りは？", answer: "新しい髪型"))
-        ]
-
-        let historyMemories = [
-            PictureMemoryModel(date: formatter.date(from: "2022/11/01")!, image: image1, theme: ThemeModel(category: .history("歴史"), question: "印象に残っている出来事は？", answer: "卒業式")),
-            PictureMemoryModel(date: formatter.date(from: "2022/12/01")!, image: image2, theme: ThemeModel(category: .history("歴史"), question: "過去の思い出は？", answer: "家族旅行"))
-        ]
-
-        return [
-            "eating": eatingMemories,
-            "sleeping": sleepingMemories,
-            "playing": playingMemories,
-            "trouble": troubleMemories,
-            "selfie": selfieMemories,
-            "history": historyMemories
-        ]
-    }()
+    @State private var memories: [PictureMemoryModel] = []
 
     let categories = ["history", "eating", "sleeping", "playing", "trouble", "selfie"]
     let categoryKeyValues: [String: String] = [
@@ -154,7 +102,10 @@ struct MemorialView: View {
                             if selectedCategory != category {
                                 selectedCategory = category
                                 currentMemoryIndex = 0
-                                startProgress()
+                                Task {
+                                    await loadMemories(for: category)
+                                    startProgress()
+                                }
                             }
                         }) {
                             ZStack {
@@ -162,13 +113,13 @@ struct MemorialView: View {
                                 Circle()
                                     .fill(selectedCategory == category ? Color(hex: "EFA98F").opacity(0.1) : Color.clear)
                                     .frame(width: 60, height: 60)
-                                
+
                                 // 画像ボタン
                                 Image(category)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 60, height: 60) // サイズを調整
-                                
+
                                 // インジケーター
                                 if selectedCategory == category {
                                     Circle()
@@ -183,6 +134,7 @@ struct MemorialView: View {
                         // デフォルトのボタンスタイルを無効化
                         Text(categoryKeyValues[category]!)
                             .font(.system(size: 10))
+                            .fixedSize(horizontal: true, vertical: false)
                             .foregroundColor(Color(hex: "0A3049"))
                     }
                 }
@@ -193,7 +145,7 @@ struct MemorialView: View {
             Spacer()
 
             // 選択されたカテゴリーの現在の画像と情報を表示
-            if let memories = memories[selectedCategory], !memories.isEmpty {
+            if !memories.isEmpty {
                 let memory = memories[currentMemoryIndex]
                 VStack(alignment: .leading, spacing: 8) {
                     Image(uiImage: memory.image)
@@ -235,7 +187,10 @@ struct MemorialView: View {
         .background(Color(.systemGray6))
         .onAppear {
             // ビューが表示されたときにプログレスを開始
-            startProgress()
+            Task {
+                await loadMemories(for: selectedCategory)
+                startProgress()
+            }
         }
         .onDisappear {
             // ビューが非表示になったときにタイマーを無効化
@@ -250,12 +205,50 @@ struct MemorialView: View {
         return formatter.string(from: date)
     }
 
+    // 選択されたカテゴリーに応じてデータを読み込む関数
+    func loadMemories(for category: String) async {
+        // PictureMemoryRepositoryを使ってデータを読み込む
+        let repository = PictureMemoryRepository.shared
+        let categoryModel: Category
+        switch category {
+        case "eating":
+            categoryModel = .eating("eating")
+        case "sleeping":
+            categoryModel = .sleeping("sleeping")
+        case "playing":
+            categoryModel = .playing("playing")
+        case "trouble":
+            categoryModel = .trouble("trouble")
+        case "selfie":
+            categoryModel = .selfie("selfie")
+        default:
+            let firstDate = Calendar.current.date(byAdding: .year, value: -1, to: .now)!
+            let fetchedMemories = await repository.get(first: firstDate, last: .now)
+            self.memories = fetchedMemories.map { PictureMemoryModel(date: $0.date, image: $0.image, theme: ThemeModel(category: convertToCategoryModel($0.theme.category), question: $0.theme.question, answer: $0.theme.answer)) }
+            return
+        }
+
+        let fetchedMemories = await repository.get(with: categoryModel)
+        self.memories = fetchedMemories.map { PictureMemoryModel(date: $0.date, image: $0.image, theme: ThemeModel(category: convertToCategoryModel($0.theme.category), question: $0.theme.question, answer: $0.theme.answer)) }
+    }
+
+    // Category を CategoryModel に変換する関数
+    func convertToCategoryModel(_ category: Category) -> CategoryModel {
+        switch category {
+        case .eating(let str): return .eating(str)
+        case .sleeping(let str): return .sleeping(str)
+        case .playing(let str): return .playing(str)
+        case .trouble(let str): return .trouble(str)
+        case .selfie(let str): return .selfie(str)
+        }
+    }
+
     // プログレスインジケーターと画像の切り替えを開始
     func startProgress() {
         progress = 0.0
         timer?.invalidate() // 既存のタイマーを無効化
 
-        guard let memories = memories[selectedCategory], !memories.isEmpty else {
+        guard !memories.isEmpty else {
             return
         }
 
@@ -270,9 +263,8 @@ struct MemorialView: View {
 
         // タイマーを設定して画像インデックスを更新
         timer = Timer.scheduledTimer(withTimeInterval: imageDuration, repeats: true) { _ in
-            currentMemoryIndex += 1
-            if currentMemoryIndex >= numberOfMemories {
-                currentMemoryIndex = 0
+            currentMemoryIndex = (currentMemoryIndex + 1) % numberOfMemories
+            if currentMemoryIndex == 0 {
                 progress = 0.0
                 timer?.invalidate()
             }
