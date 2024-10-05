@@ -8,25 +8,13 @@ struct TopListView<Stream: TopViewStreamType>: View {
     }
 
     var body: some View {
-        VStack {
-            if viewStream.output.isPresentLoadingView {
-                ProgressView("読み込み中")
-            } else {
-                if viewStream.output.isPresentErrorView {
-                    Text("エラーです")
-                } else {
-                    List {
-                        ForEach([viewStream.output.pokemon ?? .init(id: 0, name: "nil")]) { pokemon in
-                            Text("\(pokemon.name)")
-                        }
-                    }
-                }
-            }
-        }
-        .onAppear {
-            Task {
-                await viewStream.action(input: .onAppear)
-            }
+        TabView {
+            HomeView()
+                .tabItem { Text("Home") }
+            CalendarView()
+                .tabItem { Text("Calendar") }
+            MemorialView()
+                .tabItem { Text("Memorial") }
         }
     }
 }
