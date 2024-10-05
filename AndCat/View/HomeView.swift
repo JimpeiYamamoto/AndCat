@@ -51,10 +51,25 @@ struct HomeView<Stream: HomeViewStreamType>: View {
 
             Spacer()
             // deprecatedでくやしい
-            NavigationLink(
-                destination: TakenResultView(takenImage: viewStream.output.takenImage),
-                isActive: $viewStream.output.isNavigationActive
-            ) { EmptyView() }
+            if let takenImage = viewStream.output.takenImage {
+                NavigationLink(
+                    destination: TakenResultView(
+                        viewStream: TakenResultViewStream.shared,
+                        payload: .init(
+                            pictureMemory: .init(
+                                date: Date(),
+                                image: takenImage,
+                                theme: .init(
+                                    category: .playing("#猫が落ちてきました"),
+                                    question: viewStream.output.question ?? "",
+                                    answer: viewStream.output.answer ?? ""
+                                )
+                            ), dateLabel: viewStream.output.dateLabel
+                        )
+                    ),
+                    isActive: $viewStream.output.isNavigationActive
+                ) { EmptyView() }
+            }
         }
         .padding(.horizontal)
         .fullScreenCover(isPresented: $viewStream.output.shouldShowCameraView) {
@@ -80,6 +95,11 @@ extension HomeView {
     enum Destination {
         case takenResultView
     }
+}
+
+public struct FromHomeViewPayLoad {
+    public let pictureMemory: PictureMemory
+    public let dateLabel: String
 }
 
 #Preview {

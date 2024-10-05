@@ -27,6 +27,7 @@
 		F2226E1D2CB13EA60075CBB4 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E1C2CB13EA60075CBB4 /* CameraView.swift */; };
 		F2226E202CB143950075CBB4 /* TakenResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E1F2CB143950075CBB4 /* TakenResultView.swift */; };
 		F2226E222CB17BAB0075CBB4 /* HomeViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E212CB17BAB0075CBB4 /* HomeViewStream.swift */; };
+		F2226E242CB18AE60075CBB4 /* TakenResultViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E232CB18AE60075CBB4 /* TakenResultViewStream.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		F2226E1C2CB13EA60075CBB4 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F2226E1F2CB143950075CBB4 /* TakenResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenResultView.swift; sourceTree = "<group>"; };
 		F2226E212CB17BAB0075CBB4 /* HomeViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewStream.swift; sourceTree = "<group>"; };
+		F2226E232CB18AE60075CBB4 /* TakenResultViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenResultViewStream.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				F2226E112CB12A450075CBB4 /* HomeView.swift */,
+				F2226E1F2CB143950075CBB4 /* TakenResultView.swift */,
 				F2226E1E2CB143590075CBB4 /* HomeViewComponent */,
 				F2226DFB2CB111E10075CBB4 /* TopView.swift */,
 				F2226E132CB12A4C0075CBB4 /* CalendarView.swift */,
@@ -134,6 +137,7 @@
 				F2226DFE2CB111E70075CBB4 /* TopViewStream.swift */,
 				F2226DFF2CB111E70075CBB4 /* ViewStremType.swift */,
 				F2226E212CB17BAB0075CBB4 /* HomeViewStream.swift */,
+				F2226E232CB18AE60075CBB4 /* TakenResultViewStream.swift */,
 			);
 			path = ViewStream;
 			sourceTree = "<group>";
@@ -170,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				F2226E1C2CB13EA60075CBB4 /* CameraView.swift */,
-				F2226E1F2CB143950075CBB4 /* TakenResultView.swift */,
 			);
 			path = HomeViewComponent;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				F2226E122CB12A450075CBB4 /* HomeView.swift in Sources */,
 				F2226E0E2CB11A2C0075CBB4 /* Category.swift in Sources */,
 				F2226E052CB112340075CBB4 /* PokemonRepository.swift in Sources */,
+				F2226E242CB18AE60075CBB4 /* TakenResultViewStream.swift in Sources */,
 				F2226E1D2CB13EA60075CBB4 /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
