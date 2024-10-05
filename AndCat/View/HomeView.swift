@@ -114,7 +114,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 .foregroundStyle(Color(hex: "E6EAED"))
                 .padding(.bottom, 8)
         }
-        .background(Color(type: .offwhite))
+        .background(Color(hex: "E6EAED"))
         .clipShape(RoundedRectangle(cornerRadius: 15), style: FillStyle())
     }
 
