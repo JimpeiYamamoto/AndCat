@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B7F006C2CB15D58004059A9 /* CalendarViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */; };
+		4B7F006E2CB1614B004059A9 /* CalenderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006D2CB1614B004059A9 /* CalenderUseCase.swift */; };
 		F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DEA2CB110930075CBB4 /* AndCatApp.swift */; };
 		F2226DEF2CB110940075CBB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DEE2CB110940075CBB4 /* Assets.xcassets */; };
 		F2226DF22CB110940075CBB4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DF12CB110940075CBB4 /* Preview Assets.xcassets */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		06E11ADC2CB158BF004B51A6 /* AndCat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AndCat.entitlements; sourceTree = "<group>"; };
+		4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewStream.swift; sourceTree = "<group>"; };
+		4B7F006D2CB1614B004059A9 /* CalenderUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderUseCase.swift; sourceTree = "<group>"; };
 		F2226DE72CB110930075CBB4 /* AndCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2226DEA2CB110930075CBB4 /* AndCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndCatApp.swift; sourceTree = "<group>"; };
 		F2226DEE2CB110940075CBB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				F2226DF82CB111D80075CBB4 /* TopViewUseCase.swift */,
+				4B7F006D2CB1614B004059A9 /* CalenderUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				F2226DFE2CB111E70075CBB4 /* TopViewStream.swift */,
+				4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */,
 				F2226DFF2CB111E70075CBB4 /* ViewStremType.swift */,
 			);
 			path = ViewStream;
@@ -220,7 +226,9 @@
 				F2226E022CB111E70075CBB4 /* ViewStremType.swift in Sources */,
 				F2226E012CB111E70075CBB4 /* TopViewStream.swift in Sources */,
 				F2226E142CB12A4C0075CBB4 /* CalendarView.swift in Sources */,
+				4B7F006C2CB15D58004059A9 /* CalendarViewStream.swift in Sources */,
 				F2226E0A2CB118F90075CBB4 /* PictureMemory.swift in Sources */,
+				4B7F006E2CB1614B004059A9 /* CalenderUseCase.swift in Sources */,
 				F2226E162CB12A600075CBB4 /* MemorialView.swift in Sources */,
 				F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */,
 				F2226DFD2CB111E10075CBB4 /* TopView.swift in Sources */,
