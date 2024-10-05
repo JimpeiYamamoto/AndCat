@@ -11,6 +11,10 @@
 		06E11AF12CB1C022004B51A6 /* PictureMemoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AEE2CB1C021004B51A6 /* PictureMemoryUseCase.swift */; };
 		4B7F006C2CB15D58004059A9 /* CalendarViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */; };
 		4B7F00702CB1A661004059A9 /* DateMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */; };
+		06E11AE02CB18624004B51A6 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 06E11ADF2CB18624004B51A6 /* FacebookAEM */; };
+		06E11AE22CB18624004B51A6 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 06E11AE12CB18624004B51A6 /* FacebookBasics */; };
+		06E11AE42CB18624004B51A6 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 06E11AE32CB18624004B51A6 /* FacebookCore */; };
+		06E11AEA2CB18668004B51A6 /* InstagramRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AE92CB18668004B51A6 /* InstagramRepository.swift */; };
 		F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DEA2CB110930075CBB4 /* AndCatApp.swift */; };
 		F2226DEF2CB110940075CBB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DEE2CB110940075CBB4 /* Assets.xcassets */; };
 		F2226DF22CB110940075CBB4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DF12CB110940075CBB4 /* Preview Assets.xcassets */; };
@@ -38,6 +42,8 @@
 		06E11AEE2CB1C021004B51A6 /* PictureMemoryUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureMemoryUseCase.swift; sourceTree = "<group>"; };
 		4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewStream.swift; sourceTree = "<group>"; };
 		4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMemoryView.swift; sourceTree = "<group>"; };
+		06E11AE92CB18668004B51A6 /* InstagramRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramRepository.swift; sourceTree = "<group>"; };
+		06E11AEB2CB192DB004B51A6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		F2226DE72CB110930075CBB4 /* AndCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2226DEA2CB110930075CBB4 /* AndCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndCatApp.swift; sourceTree = "<group>"; };
 		F2226DEE2CB110940075CBB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,6 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E11AE02CB18624004B51A6 /* FacebookAEM in Frameworks */,
+				06E11AE42CB18624004B51A6 /* FacebookCore in Frameworks */,
+				06E11AE22CB18624004B51A6 /* FacebookBasics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				F2226E1A2CB13E0B0075CBB4 /* Info.plist */,
+				06E11AEB2CB192DB004B51A6 /* Config.xcconfig */,
 				F2226E172CB1341B0075CBB4 /* Utils */,
 				06E11ADD2CB16E34004B51A6 /* Info.plist */,
 				06E11ADC2CB158BF004B51A6 /* AndCat.entitlements */,
@@ -161,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				F2226E0F2CB11C840075CBB4 /* PictureMemoryRepository.swift */,
+				06E11AE92CB18668004B51A6 /* InstagramRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -207,6 +218,11 @@
 			dependencies = (
 			);
 			name = AndCat;
+			packageProductDependencies = (
+				06E11ADF2CB18624004B51A6 /* FacebookAEM */,
+				06E11AE12CB18624004B51A6 /* FacebookBasics */,
+				06E11AE32CB18624004B51A6 /* FacebookCore */,
+			);
 			productName = AndCat;
 			productReference = F2226DE72CB110930075CBB4 /* AndCat.app */;
 			productType = "com.apple.product-type.application";
@@ -235,6 +251,9 @@
 				Base,
 			);
 			mainGroup = F2226DDE2CB110930075CBB4;
+			packageReferences = (
+				06E11ADE2CB18624004B51A6 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = F2226DE82CB110930075CBB4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -261,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E11AEA2CB18668004B51A6 /* InstagramRepository.swift in Sources */,
 				F2226E0C2CB119170075CBB4 /* Theme.swift in Sources */,
 				F2226E022CB111E70075CBB4 /* ViewStremType.swift in Sources */,
 				F2226E202CB143950075CBB4 /* TakenResultView.swift in Sources */,
@@ -289,6 +309,7 @@
 /* Begin XCBuildConfiguration section */
 		F2226DF32CB110940075CBB4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06E11AEB2CB192DB004B51A6 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -352,6 +373,7 @@
 		};
 		F2226DF42CB110940075CBB4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06E11AEB2CB192DB004B51A6 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -408,6 +430,7 @@
 		};
 		F2226DF62CB110940075CBB4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06E11AEB2CB192DB004B51A6 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -429,7 +452,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yjim.AndCat2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yjim.AndCat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -439,6 +462,7 @@
 		};
 		F2226DF72CB110940075CBB4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06E11AEB2CB192DB004B51A6 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -460,7 +484,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yjim.AndCat2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yjim.AndCat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -490,6 +514,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		06E11ADE2CB18624004B51A6 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		06E11ADF2CB18624004B51A6 /* FacebookAEM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 06E11ADE2CB18624004B51A6 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookAEM;
+		};
+		06E11AE12CB18624004B51A6 /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 06E11ADE2CB18624004B51A6 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		06E11AE32CB18624004B51A6 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 06E11ADE2CB18624004B51A6 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F2226DDF2CB110930075CBB4 /* Project object */;
 }
