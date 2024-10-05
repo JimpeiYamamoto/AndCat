@@ -2,6 +2,20 @@ import SwiftUI
 
 struct TopListView<Stream: TopViewStreamType>: View {
     @StateObject var viewStream: Stream
+    @State private var selectedTab: Int = 0
+
+        var selectedTabTitle: String {
+            switch selectedTab {
+            case 0:
+                return "お題"
+            case 1:
+                return "カレンダー"
+            case 2:
+                return "メモリアル"
+            default:
+                return ""
+            }
+        }
 
     public init(viewStream: Stream) {
         _viewStream = StateObject(wrappedValue: viewStream)
@@ -14,25 +28,28 @@ struct TopListView<Stream: TopViewStreamType>: View {
     }
 
     var body: some View {
-        NavigationStack {
-            TabView {
-                HomeView(viewStream: HomeViewStream.shared)
-                    .tabItem { Text("Home") }
-                CalendarView()
-                    .tabItem { Text("Calendar") }
-                MemorialView()
-                    .tabItem { Text("Memorial") }
-            }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("お題")
-                        .foregroundStyle(Color.black)
-                        .bold()
+            NavigationStack {
+                TabView(selection: $selectedTab) {
+                    HomeView(viewStream: HomeViewStream.shared)
+                        .tabItem { Text("Home") }
+                        .tag(0)
+                    CalendarView()
+                        .tabItem { Text("Calendar") }
+                        .tag(1)
+                    MemorialView()
+                        .tabItem { Text("Memorial") }
+                        .tag(2)
                 }
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text(selectedTabTitle)
+                            .foregroundStyle(Color.black)
+                            .bold()
+                    }
+                }
+                .navigationBarTitleDisplayMode(.inline)
             }
-            .navigationBarTitleDisplayMode(.inline)
         }
-    }
 }
 
 #Preview {
