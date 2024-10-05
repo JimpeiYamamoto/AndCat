@@ -8,7 +8,13 @@ where Output == HomeViewStreamModel.Output,
 {}
 
 public final class HomeViewStream: HomeViewStreamType {
-    public var state = HomeViewStreamModel.State()
+    public var state = HomeViewStreamModel.State(
+        pictureMemory: .init(
+            date: Date(),
+            image: UIImage(),
+            theme: HomeViewStream.initialTheme
+        )
+    )
 
     private let pictureMemoryRepository: PictureMemoryRepositoryType
 
@@ -48,12 +54,13 @@ public final class HomeViewStream: HomeViewStreamType {
                     first: today,
                     last: tomorrow
                 )
-            }.value.first
+            }.value.last
 
             guard let pictureMemory = pictureMemory else {
                 return
             }
 
+            state.pictureMemory = pictureMemory
             output.question = pictureMemory.theme.question
             output.answer = pictureMemory.theme.answer
             output.takenImage = pictureMemory.image
@@ -81,10 +88,19 @@ public enum HomeViewStreamModel {
     }
 
     public struct State {
-        public init() {}
+        public var pictureMemory: PictureMemory
+        public init(pictureMemory: PictureMemory) {
+            self.pictureMemory = pictureMemory
+        }
     }
 }
 
 extension HomeViewStream {
     public static let shared = HomeViewStream(pictureMemoryRepository: PictureMemoryRepository.shared)
+
+    public static let initialTheme = Theme(
+        category: .playing("猫が落ちてきました"),
+        question: "あなたは今どんな気分",
+        answer: ""
+    )
 }

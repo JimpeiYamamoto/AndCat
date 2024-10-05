@@ -8,7 +8,7 @@ where Output == TakenResultViewStreamModel.Output,
 {}
 
 public final class TakenResultViewStream: TakenResultViewStreamType {
-    public var state = TakenResultViewStreamModel.State()
+    public var state = TakenResultViewStreamModel.State(pictureMemory: nil)
 
     private let pictureMemoryRepository: PictureMemoryRepositoryType
 
@@ -25,23 +25,24 @@ public final class TakenResultViewStream: TakenResultViewStreamType {
     public func action(input: TakenResultViewStreamModel.Input) async {
         switch input {
         case .didTapCompleteButton:
-            guard let takenImage = output.takenImage else {
+            guard let pictureMemory = state.pictureMemory else {
                 return
             }
             Task.detached(priority: .background) { [weak self] in
                 await self?.pictureMemoryRepository.save(
                     .init(
-                        date: Date(),
-                        image: takenImage,
+                        date: pictureMemory.date,
+                        image: pictureMemory.image,
                         theme: .init(
-                            category: .playing("猫が落ちてました"),
-                            question: "どんな様子ですか？",
+                            category: pictureMemory.theme.category,
+                            question: pictureMemory.theme.question,
                             answer: self?.output.typedAnswer ?? ""
                         )
                     )
                 )
             }
         case let .onAppear(payload):
+            state.pictureMemory = payload.pictureMemory
             output = .init(
                 typedAnswer: payload.pictureMemory.theme.answer,
                 dateLabel: payload.dateLabel,
@@ -66,7 +67,10 @@ public enum TakenResultViewStreamModel {
     }
 
     public struct State {
-        public init() {}
+        public var pictureMemory: PictureMemory?
+        public init(pictureMemory: PictureMemory?) {
+            self.pictureMemory = pictureMemory
+        }
     }
 }
 

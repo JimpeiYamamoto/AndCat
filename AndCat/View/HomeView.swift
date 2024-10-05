@@ -57,14 +57,15 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                         viewStream: TakenResultViewStream.shared,
                         payload: .init(
                             pictureMemory: .init(
-                                date: Date(),
+                                date: viewStream.state.pictureMemory.date,
                                 image: takenImage,
                                 theme: .init(
-                                    category: .playing("#猫が落ちてきました"),
-                                    question: viewStream.output.question ?? "",
-                                    answer: viewStream.output.answer ?? ""
+                                    category: viewStream.state.pictureMemory.theme.category,
+                                    question: viewStream.state.pictureMemory.theme.question,
+                                    answer: ""
                                 )
-                            ), dateLabel: viewStream.output.dateLabel
+                            ),
+                            dateLabel: viewStream.output.dateLabel
                         )
                     ),
                     isActive: $viewStream.output.isNavigationActive

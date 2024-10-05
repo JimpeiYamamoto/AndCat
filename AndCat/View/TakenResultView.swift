@@ -8,7 +8,6 @@ struct TakenResultView<Stream: TakenResultViewStreamType>: View {
 
     public init(viewStream: Stream, payload: FromHomeViewPayLoad) {
         self.payLoad = payload
-        print(payload)
         _viewStream = StateObject(wrappedValue: viewStream)
     }
 
