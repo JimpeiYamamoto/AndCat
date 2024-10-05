@@ -6,5 +6,14 @@
 	<array>
 		<dict/>
 	</array>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>SplushBackground</string>
+		<key>UIImageName</key>
+		<string>splush</string>
+	</dict>
 </dict>
 </plist>
