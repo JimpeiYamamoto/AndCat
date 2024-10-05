@@ -9,7 +9,7 @@ struct TakenResultView<Stream: TakenResultViewStreamType>: View {
     var todaysTopic: String {
         guard let category = viewStream.output.category else { return "" }
         switch category {
-            case .eating(let title), .playing(let title),  .sleeping(let title), .trouble(let title), .selfie(let title), .history(let title):
+            case .eating(let title), .playing(let title),  .sleeping(let title), .trouble(let title), .selfie(let title):
                 return title
         }
     }

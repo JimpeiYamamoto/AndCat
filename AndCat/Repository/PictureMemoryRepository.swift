@@ -21,8 +21,6 @@ func categoryToInt(_ category: Category) -> Int {
             return 3
         case .selfie:
             return 4
-        case .history:
-            return 5
     }
 }
 
@@ -167,8 +165,7 @@ extension PictureMemoryRepository {
             .init(category: .playing("playing"), question: "Q: playing", answer: "A: playing"),
             .init(category: .sleeping("sleeping"), question: "Q: sleeping", answer: "A: sleepgin"),
             .init(category: .trouble("trouble"), question: "Q: trouble", answer: "A: trouble"),
-            .init(category: .selfie("selfie"), question: "Q: selfie", answer: "A: selfie"),
-            .init(category: .history("history"), question: "Q: history", answer: "A: history")
+            .init(category: .selfie("selfie"), question: "Q: selfie", answer: "A: selfie")
         ]
         return themes.randomElement()!
     }
