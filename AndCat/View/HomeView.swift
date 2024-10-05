@@ -20,18 +20,16 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                     Spacer()
                 }
                 .padding(.top)
-//                VStack(alignment: .center, spacing: 16) {
-                    firstSectionView()
-                        .padding(.horizontal, 16)
-//                }
-                .padding(.horizontal, 16)
-                .background(Color(type: .offwhite))
-                .clipShape(RoundedRectangle(cornerRadius: 10), style: FillStyle())
-                .onTapGesture {
-                    Task {
-                        await viewStream.action(input: .didTapThemeView)
+
+                firstSectionView()
+                    .padding(.horizontal, 16)
+                    .background(Color(type: .offwhite))
+                    .clipShape(RoundedRectangle(cornerRadius: 10), style: FillStyle())
+                    .onTapGesture {
+                        Task {
+                            await viewStream.action(input: .didTapThemeView)
+                        }
                     }
-                }
 
                 HStack {
                     Text("カテゴリ")
@@ -98,7 +96,6 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                     await viewStream.action(input: .onAppear)
                 }
             }
-
         }
         .padding(.horizontal, 16)
         .background(Color(type: .backGround))
