@@ -196,26 +196,10 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 }
                 .background(RectangleGetter(rect: $rect))
 
-<<<<<<< HEAD
             if viewStream.output.answer != nil {
                 Button(action: {
                     Task {
                         await viewStream.action(input: .didTapThemeView)
-=======
-                Spacer()
-                // deprecatedでくやしい
-                NavigationLink(
-                    destination: TakenResultView(takenImage: takenImage),
-                    isActive: $isNavigationActive
-                ) { EmptyView() }
-        }
-        .padding(.horizontal)
-        .fullScreenCover(isPresented: $shouldShowCameraView) {
-            CameraView(image: $takenImage)
-                .onDisappear {
-                    if takenImage != nil {
-                        isNavigationActive.toggle()
->>>>>>> 03a7e97 (impl: insta share)
                     }
                 }, label: {
                     Text("再撮影する")
