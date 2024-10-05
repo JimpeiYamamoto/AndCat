@@ -23,6 +23,9 @@
 		F2226E122CB12A450075CBB4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E112CB12A450075CBB4 /* HomeView.swift */; };
 		F2226E142CB12A4C0075CBB4 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E132CB12A4C0075CBB4 /* CalendarView.swift */; };
 		F2226E162CB12A600075CBB4 /* MemorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E152CB12A600075CBB4 /* MemorialView.swift */; };
+		F2226E192CB1345D0075CBB4 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E182CB1345D0075CBB4 /* ColorExtension.swift */; };
+		F2226E1D2CB13EA60075CBB4 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E1C2CB13EA60075CBB4 /* CameraView.swift */; };
+		F2226E202CB143950075CBB4 /* TakenResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E1F2CB143950075CBB4 /* TakenResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,10 @@
 		F2226E112CB12A450075CBB4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F2226E132CB12A4C0075CBB4 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F2226E152CB12A600075CBB4 /* MemorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialView.swift; sourceTree = "<group>"; };
+		F2226E182CB1345D0075CBB4 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		F2226E1A2CB13E0B0075CBB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F2226E1C2CB13EA60075CBB4 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		F2226E1F2CB143950075CBB4 /* TakenResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +82,8 @@
 		F2226DE92CB110930075CBB4 /* AndCat */ = {
 			isa = PBXGroup;
 			children = (
+				F2226E1A2CB13E0B0075CBB4 /* Info.plist */,
+				F2226E172CB1341B0075CBB4 /* Utils */,
 				F2226E062CB112880075CBB4 /* Domain */,
 				F2226E032CB112270075CBB4 /* Repository */,
 				F2226DF92CB111D80075CBB4 /* UseCase */,
@@ -106,8 +115,9 @@
 		F2226DFC2CB111E10075CBB4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F2226DFB2CB111E10075CBB4 /* TopView.swift */,
 				F2226E112CB12A450075CBB4 /* HomeView.swift */,
+				F2226E1E2CB143590075CBB4 /* HomeViewComponent */,
+				F2226DFB2CB111E10075CBB4 /* TopView.swift */,
 				F2226E132CB12A4C0075CBB4 /* CalendarView.swift */,
 				F2226E152CB12A600075CBB4 /* MemorialView.swift */,
 			);
@@ -141,6 +151,23 @@
 				F2226E0D2CB11A2C0075CBB4 /* Category.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		F2226E172CB1341B0075CBB4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F2226E182CB1345D0075CBB4 /* ColorExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F2226E1E2CB143590075CBB4 /* HomeViewComponent */ = {
+			isa = PBXGroup;
+			children = (
+				F2226E1C2CB13EA60075CBB4 /* CameraView.swift */,
+				F2226E1F2CB143950075CBB4 /* TakenResultView.swift */,
+			);
+			path = HomeViewComponent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,16 +244,19 @@
 				F2226E082CB1129E0075CBB4 /* Pokemon.swift in Sources */,
 				F2226E022CB111E70075CBB4 /* ViewStremType.swift in Sources */,
 				F2226E012CB111E70075CBB4 /* TopViewStream.swift in Sources */,
+				F2226E202CB143950075CBB4 /* TakenResultView.swift in Sources */,
 				F2226E142CB12A4C0075CBB4 /* CalendarView.swift in Sources */,
 				F2226E0A2CB118F90075CBB4 /* PictureMemory.swift in Sources */,
 				F2226E162CB12A600075CBB4 /* MemorialView.swift in Sources */,
 				F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */,
 				F2226DFD2CB111E10075CBB4 /* TopView.swift in Sources */,
+				F2226E192CB1345D0075CBB4 /* ColorExtension.swift in Sources */,
 				F2226E102CB11C840075CBB4 /* PictureMemoryRepository.swift in Sources */,
 				F2226DFA2CB111D80075CBB4 /* TopViewUseCase.swift in Sources */,
 				F2226E122CB12A450075CBB4 /* HomeView.swift in Sources */,
 				F2226E0E2CB11A2C0075CBB4 /* Category.swift in Sources */,
 				F2226E052CB112340075CBB4 /* PokemonRepository.swift in Sources */,
+				F2226E1D2CB13EA60075CBB4 /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +393,7 @@
 				DEVELOPMENT_TEAM = G9JXCB7X2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AndCat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -392,6 +423,7 @@
 				DEVELOPMENT_TEAM = G9JXCB7X2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AndCat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -5,7 +5,7 @@ extension Color {
     init(type: ColorType) {
         switch type {
         case .backGround:
-            self.init(red: 144 / 255.0, green: 144.0 / 255.0, blue: 144.0 / 241.0)
+            self.init(red: 200.0 / 255.0, green: 200.0 / 255.0, blue: 200.0 / 255.0)
         case .offwhite:
             self.init(red: 241.0 / 255.0, green: 241.0 / 255.0, blue: 241.0 / 255.0)
         }
