@@ -10,12 +10,8 @@
 		F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DEA2CB110930075CBB4 /* AndCatApp.swift */; };
 		F2226DEF2CB110940075CBB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DEE2CB110940075CBB4 /* Assets.xcassets */; };
 		F2226DF22CB110940075CBB4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2226DF12CB110940075CBB4 /* Preview Assets.xcassets */; };
-		F2226DFA2CB111D80075CBB4 /* TopViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DF82CB111D80075CBB4 /* TopViewUseCase.swift */; };
 		F2226DFD2CB111E10075CBB4 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DFB2CB111E10075CBB4 /* TopView.swift */; };
-		F2226E012CB111E70075CBB4 /* TopViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DFE2CB111E70075CBB4 /* TopViewStream.swift */; };
 		F2226E022CB111E70075CBB4 /* ViewStremType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DFF2CB111E70075CBB4 /* ViewStremType.swift */; };
-		F2226E052CB112340075CBB4 /* PokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E042CB112340075CBB4 /* PokemonRepository.swift */; };
-		F2226E082CB1129E0075CBB4 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E072CB1129E0075CBB4 /* Pokemon.swift */; };
 		F2226E0A2CB118F90075CBB4 /* PictureMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E092CB118F90075CBB4 /* PictureMemory.swift */; };
 		F2226E0C2CB119170075CBB4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E0B2CB119170075CBB4 /* Theme.swift */; };
 		F2226E0E2CB11A2C0075CBB4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E0D2CB11A2C0075CBB4 /* Category.swift */; };
@@ -28,6 +24,7 @@
 		F2226E202CB143950075CBB4 /* TakenResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E1F2CB143950075CBB4 /* TakenResultView.swift */; };
 		F2226E222CB17BAB0075CBB4 /* HomeViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E212CB17BAB0075CBB4 /* HomeViewStream.swift */; };
 		F2226E242CB18AE60075CBB4 /* TakenResultViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E232CB18AE60075CBB4 /* TakenResultViewStream.swift */; };
+		F2226E262CB1A8DC0075CBB4 /* TopViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E252CB1A8DC0075CBB4 /* TopViewStream.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,12 +33,8 @@
 		F2226DEA2CB110930075CBB4 /* AndCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndCatApp.swift; sourceTree = "<group>"; };
 		F2226DEE2CB110940075CBB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2226DF12CB110940075CBB4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F2226DF82CB111D80075CBB4 /* TopViewUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewUseCase.swift; sourceTree = "<group>"; };
 		F2226DFB2CB111E10075CBB4 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
-		F2226DFE2CB111E70075CBB4 /* TopViewStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewStream.swift; sourceTree = "<group>"; };
 		F2226DFF2CB111E70075CBB4 /* ViewStremType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStremType.swift; sourceTree = "<group>"; };
-		F2226E042CB112340075CBB4 /* PokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepository.swift; sourceTree = "<group>"; };
-		F2226E072CB1129E0075CBB4 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		F2226E092CB118F90075CBB4 /* PictureMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureMemory.swift; sourceTree = "<group>"; };
 		F2226E0B2CB119170075CBB4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F2226E0D2CB11A2C0075CBB4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -55,6 +48,7 @@
 		F2226E1F2CB143950075CBB4 /* TakenResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenResultView.swift; sourceTree = "<group>"; };
 		F2226E212CB17BAB0075CBB4 /* HomeViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewStream.swift; sourceTree = "<group>"; };
 		F2226E232CB18AE60075CBB4 /* TakenResultViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenResultViewStream.swift; sourceTree = "<group>"; };
+		F2226E252CB1A8DC0075CBB4 /* TopViewStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewStream.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +86,6 @@
 				06E11ADC2CB158BF004B51A6 /* AndCat.entitlements */,
 				F2226E062CB112880075CBB4 /* Domain */,
 				F2226E032CB112270075CBB4 /* Repository */,
-				F2226DF92CB111D80075CBB4 /* UseCase */,
 				F2226E002CB111E70075CBB4 /* ViewStream */,
 				F2226DFC2CB111E10075CBB4 /* View */,
 				F2226DEA2CB110930075CBB4 /* AndCatApp.swift */,
@@ -108,14 +101,6 @@
 				F2226DF12CB110940075CBB4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		F2226DF92CB111D80075CBB4 /* UseCase */ = {
-			isa = PBXGroup;
-			children = (
-				F2226DF82CB111D80075CBB4 /* TopViewUseCase.swift */,
-			);
-			path = UseCase;
 			sourceTree = "<group>";
 		};
 		F2226DFC2CB111E10075CBB4 /* View */ = {
@@ -134,7 +119,7 @@
 		F2226E002CB111E70075CBB4 /* ViewStream */ = {
 			isa = PBXGroup;
 			children = (
-				F2226DFE2CB111E70075CBB4 /* TopViewStream.swift */,
+				F2226E252CB1A8DC0075CBB4 /* TopViewStream.swift */,
 				F2226DFF2CB111E70075CBB4 /* ViewStremType.swift */,
 				F2226E212CB17BAB0075CBB4 /* HomeViewStream.swift */,
 				F2226E232CB18AE60075CBB4 /* TakenResultViewStream.swift */,
@@ -145,7 +130,6 @@
 		F2226E032CB112270075CBB4 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				F2226E042CB112340075CBB4 /* PokemonRepository.swift */,
 				F2226E0F2CB11C840075CBB4 /* PictureMemoryRepository.swift */,
 			);
 			path = Repository;
@@ -154,7 +138,6 @@
 		F2226E062CB112880075CBB4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				F2226E072CB1129E0075CBB4 /* Pokemon.swift */,
 				F2226E092CB118F90075CBB4 /* PictureMemory.swift */,
 				F2226E0B2CB119170075CBB4 /* Theme.swift */,
 				F2226E0D2CB11A2C0075CBB4 /* Category.swift */,
@@ -249,22 +232,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2226E0C2CB119170075CBB4 /* Theme.swift in Sources */,
-				F2226E082CB1129E0075CBB4 /* Pokemon.swift in Sources */,
 				F2226E022CB111E70075CBB4 /* ViewStremType.swift in Sources */,
-				F2226E012CB111E70075CBB4 /* TopViewStream.swift in Sources */,
 				F2226E202CB143950075CBB4 /* TakenResultView.swift in Sources */,
 				F2226E142CB12A4C0075CBB4 /* CalendarView.swift in Sources */,
 				F2226E0A2CB118F90075CBB4 /* PictureMemory.swift in Sources */,
 				F2226E162CB12A600075CBB4 /* MemorialView.swift in Sources */,
 				F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */,
 				F2226E222CB17BAB0075CBB4 /* HomeViewStream.swift in Sources */,
+				F2226E262CB1A8DC0075CBB4 /* TopViewStream.swift in Sources */,
 				F2226DFD2CB111E10075CBB4 /* TopView.swift in Sources */,
 				F2226E192CB1345D0075CBB4 /* ColorExtension.swift in Sources */,
 				F2226E102CB11C840075CBB4 /* PictureMemoryRepository.swift in Sources */,
-				F2226DFA2CB111D80075CBB4 /* TopViewUseCase.swift in Sources */,
 				F2226E122CB12A450075CBB4 /* HomeView.swift in Sources */,
 				F2226E0E2CB11A2C0075CBB4 /* Category.swift in Sources */,
-				F2226E052CB112340075CBB4 /* PokemonRepository.swift in Sources */,
 				F2226E242CB18AE60075CBB4 /* TakenResultViewStream.swift in Sources */,
 				F2226E1D2CB13EA60075CBB4 /* CameraView.swift in Sources */,
 			);

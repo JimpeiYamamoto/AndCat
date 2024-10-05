@@ -38,6 +38,7 @@ public final class HomeViewStream: HomeViewStreamType {
             output.shouldShowCameraView.toggle()
 
         case .onAppear:
+
             let now = Date()
             let calendar = Calendar.current
             let today = calendar.startOfDay(for: now)
@@ -57,6 +58,7 @@ public final class HomeViewStream: HomeViewStreamType {
             }.value.last
 
             guard let pictureMemory = pictureMemory else {
+                output.question = HomeViewStream.initialTheme.question
                 return
             }
 
