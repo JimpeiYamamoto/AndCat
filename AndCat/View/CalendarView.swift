@@ -90,8 +90,13 @@ struct MonthlyCalendarView<Stream: CalendarViewStreamType>: View {
                                 NavigationLink(destination: DateMemoryView(pictureMemory: pictureMemory)) {
                                     Image(uiImage: pictureMemory.image)
                                         .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 50, height: 50)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 50)
+                                        .cornerRadius(6)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 6)
+                                                .stroke(.black, lineWidth: 2)
+                                        )
                                 }
                             }
                             Text("\(day)")
