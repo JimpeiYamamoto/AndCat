@@ -9,19 +9,27 @@ struct TopListView<Stream: TopViewStreamType>: View {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor.white
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().backgroundColor = UIColor.white
     }
 
     var body: some View {
         NavigationStack {
             TabView {
                 HomeView(viewStream: HomeViewStream.shared)
-                    .tabItem { Text("Home") }
+                    .tabItem {
+                        Image("icon01").renderingMode(.template)
+                    }
                 CalendarView()
-                    .tabItem { Text("Calendar") }
+                    .tabItem {
+                    Image("icon02").renderingMode(.template)
+                    }
                 MemorialView()
-                    .tabItem { Text("Memorial") }
+                    .tabItem {
+                    Image("icon03").renderingMode(.template)
+                    }
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
