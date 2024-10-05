@@ -22,7 +22,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 .padding(.top)
 
                 firstSectionView()
-                    .background(Color(hex: "E6EAED"))
+                    .background(Color(type: .offwhite))
                     .clipShape(RoundedRectangle(cornerRadius: 10), style: FillStyle())
                     .onTapGesture {
                         Task {
@@ -114,7 +114,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 .foregroundStyle(Color(hex: "0A3049"))
                 .padding(.bottom, 8)
         }
-        .background(Color(hex: "E6EAED"))
+        .background(Color(type: .offwhite))
         .clipShape(RoundedRectangle(cornerRadius: 15), style: FillStyle())
     }
 
