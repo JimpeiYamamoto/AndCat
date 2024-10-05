@@ -13,6 +13,8 @@ struct DateMemoryView: View {
     private let navigationTitle: String
     private let navigationSubTitle: String
     
+    @State private var rect: CGRect = .zero
+    
     init(pictureMemory: CalenderViewStreamModel.PictureMemory) {
         self.pictureMemory = pictureMemory
         
@@ -54,6 +56,7 @@ struct DateMemoryView: View {
             .frame(height: 50)
             Spacer()
         }
+        .background(RectangleGetter(rect: $rect))
         .padding(.horizontal, 16)
         .padding(.top)
         .background(Color(hex: "E6EAED"))
@@ -61,6 +64,62 @@ struct DateMemoryView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarBackground(.white, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Image("Share")
+                    .onTapGesture {
+                        Task {
+                            do {
+                                guard let uiImage = UIApplication.shared.windows[0].rootViewController?.view!.getImage(rect: self.rect).roundedCorners(radius: 8) else { return }
+                                try await InstagramRepository.shared.share(stickerImage: uiImage, backgroundTopColor: "#E6EAED", backgroundBottomColor: "#E6EAED")
+                            }
+                        }
+                    }
+            }
+        }
+    }
+}
+
+// https://qiita.com/tsuzuki817/items/a3d2470ba9df07ed0d99
+struct RectangleGetter: View {
+    @Binding var rect: CGRect
+    
+    var body: some View {
+        GeometryReader { geometry in
+            self.createView(proxy: geometry)
+        }
+    }
+    
+    func createView(proxy: GeometryProxy) -> some View {
+        DispatchQueue.main.async {
+            self.rect = proxy.frame(in: .global)
+        }
+        return Rectangle().fill(Color.clear)
+    }
+}
+
+extension UIView {
+    func getImage(rect: CGRect) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: rect)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+ 
+extension UIImage {
+    func roundedCorners(radius: CGFloat) -> UIImage {
+        
+        return UIGraphicsImageRenderer(size: self.size).image { context in
+            
+            let rect = context.format.bounds
+            // Rectを角丸にする
+            let roundedPath = UIBezierPath(roundedRect: rect,
+                                           cornerRadius: radius)
+            roundedPath.addClip()
+            // UIImageを描画
+            draw(in: rect)
+        }
     }
 }
 

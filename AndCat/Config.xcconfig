@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  AndCat
+//
+//  Created by KoichiroUeki on 2024/10/06.
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+FACEBOOK_APP_ID = ""
+FACEBOOK_CLIENT_TOKEN = ""
