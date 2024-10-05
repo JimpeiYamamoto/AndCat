@@ -111,7 +111,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 .padding(.top, 8)
             Text(title)
                 .font(.system(size: 12))
-                .foregroundStyle(Color(hex: "E6EAED"))
+                .foregroundStyle(Color(hex: "0A3049"))
                 .padding(.bottom, 8)
         }
         .background(Color(hex: "E6EAED"))
