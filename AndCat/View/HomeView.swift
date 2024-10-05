@@ -20,48 +20,11 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                     Spacer()
                 }
                 .padding(.top)
-                VStack(alignment: .center, spacing: 16) {
-                    Text(viewStream.output.dateLabel)
-                        .foregroundStyle(Color.black)
-                        .frame(maxWidth: .infinity)
-                        .padding(.top, 16)
-                    Text(viewStream.output.category)
-                        .foregroundStyle(Color.black)
-                        .frame(maxWidth: .infinity)
-                        .bold()
-                        .padding(.bottom, viewStream.output.takenImage == nil ? 16 : 0)
-                    if let takenImage = viewStream.output.takenImage {
-                        Image(uiImage: takenImage)
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                            .padding(.horizontal, 16)
-                    }
-                    if let answer = viewStream.output.answer {
-                        HStack {
-                            Text(answer)
-                                .foregroundStyle(Color(type: .captionGray))
-                                .font(.system(size: 14))
-                                .frame(alignment: .leading)
-                                .padding(.horizontal, 32)
-                            Spacer()
-                        }
-                    }
-                    if viewStream.output.answer != nil {
-                        Button(action: {
-                            Task {
-                                await viewStream.action(input: .didTapThemeView)
-                            }
-                        }, label: {
-                            Text("再撮影する")
-                                .font(.system(size: 14))
-                                .foregroundStyle(Color.black)
-                                .underline()
-                        })
-                        .padding(.bottom)
-
-                    }
-                }
+//                VStack(alignment: .center, spacing: 16) {
+                    firstSectionView()
+                        .padding(.horizontal, 16)
+//                }
+                .padding(.horizontal, 16)
                 .background(Color(type: .offwhite))
                 .clipShape(RoundedRectangle(cornerRadius: 10), style: FillStyle())
                 .onTapGesture {
@@ -81,27 +44,20 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 }
                 .padding(.top)
 
-                VStack {
-                    HStack(spacing: 20) {
-                        Rectangle()
-                            .fill(Color.red)
-                        Rectangle()
-                            .fill(Color.green)
-                        Rectangle()
-                            .fill(Color.blue)
-                    }
-                    .padding(.bottom, 16)
-
-                    HStack(spacing: 20) {
-                        Rectangle()
-                            .fill(Color.red)
-                        Rectangle()
-                            .fill(Color.green)
-                        Spacer()
-                    }
+                HStack(spacing: 20) {
+                    secondSectionView(image: UIImage(named: "eating")!, title: "ごはん")
+                    secondSectionView(image: UIImage(named: "sleeping")!, title: "おひるね")
+                    secondSectionView(image: UIImage(named: "playing")!, title: "あそび")
                 }
-                .background(Color(type: .offwhite))
-                .clipShape(RoundedRectangle(cornerRadius: 10), style: FillStyle())
+                .padding(.bottom, 16)
+                .padding(.horizontal, 16)
+
+                HStack(spacing: 20) {
+                    secondSectionView(image: UIImage(named: "trouble")!, title: "トラブル")
+                    secondSectionView(image: UIImage(named: "selfie")!, title: "セルフィー")
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
 
                 // deprecatedでくやしい
                 if let takenImage = viewStream.output.takenImage {
@@ -144,8 +100,76 @@ struct HomeView<Stream: HomeViewStreamType>: View {
             }
 
         }
+        .padding(.horizontal, 16)
         .background(Color(type: .backGround))
         .scrollContentBackground(.hidden)
+    }
+
+    func secondSectionView(image: UIImage, title: String) -> some View {
+        VStack(alignment: .center, spacing: 0) {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 110, height: 64)
+                .padding(.top, 8)
+            Text(title)
+                .font(.system(size: 12))
+                .foregroundStyle(Color.black)
+                .padding(.bottom, 8)
+        }
+        .background(Color(type: .offwhite))
+        .clipShape(RoundedRectangle(cornerRadius: 15), style: FillStyle())
+    }
+
+    func firstSectionView() -> some View {
+        VStack(alignment: .center, spacing: 16) {
+            HStack {
+                Spacer()
+                Text(viewStream.output.dateLabel)
+                    .foregroundStyle(Color.black)
+                    .padding(.top, 16)
+                Spacer()
+            }
+            .padding(.horizontal, 16)
+
+            Text(viewStream.output.category)
+                .foregroundStyle(Color.black)
+                .bold()
+                .padding(.bottom, viewStream.output.takenImage == nil ? 16 : 0)
+
+            if let takenImage = viewStream.output.takenImage {
+                Image(uiImage: takenImage)
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .padding(.horizontal, 16)
+            }
+
+            if let answer = viewStream.output.answer {
+                HStack {
+                    Text(answer)
+                        .foregroundStyle(Color(type: .captionGray))
+                        .font(.system(size: 14))
+                        .frame(alignment: .leading)
+                        .padding(.horizontal, 32)
+                    Spacer()
+                }
+            }
+
+            if viewStream.output.answer != nil {
+                Button(action: {
+                    Task {
+                        await viewStream.action(input: .didTapThemeView)
+                    }
+                }, label: {
+                    Text("再撮影する")
+                        .font(.system(size: 14))
+                        .foregroundStyle(Color.black)
+                        .underline()
+                })
+                .padding(.bottom)
+            }
+        }
     }
 }
 
