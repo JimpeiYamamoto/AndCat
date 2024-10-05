@@ -7,5 +7,4 @@ public enum Category: Codable {
     case playing(String)
     case trouble(String)
     case selfie(String)
-    case history(String)
 }
