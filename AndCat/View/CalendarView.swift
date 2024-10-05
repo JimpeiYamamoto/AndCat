@@ -88,10 +88,15 @@ struct MonthlyCalendarView<Stream: CalendarViewStreamType>: View {
                             if let dateDict,
                                let pictureMemory = dateDict[day] {
                                 NavigationLink(destination: DateMemoryView(pictureMemory: pictureMemory)) {
-                                    Image(uiImage: pictureMemory.image)
+                                    Image("cat")
                                         .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 50, height: 50)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 50)
+                                        .cornerRadius(6)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 6)
+                                                .stroke(.black, lineWidth: 2)
+                                        )
                                 }
                             }
                             Text("\(day)")
