@@ -23,6 +23,7 @@ public final class HomeViewStream: HomeViewStreamType {
     }
 
     @Published public var output = HomeViewStreamModel.Output(
+        category: "",
         dateLabel: "",
         takenImage: nil,
         question: nil,
@@ -59,10 +60,18 @@ public final class HomeViewStream: HomeViewStreamType {
 
             guard let pictureMemory = pictureMemory else {
                 output.question = HomeViewStream.initialTheme.question
+                switch HomeViewStream.initialTheme.category.self {
+                case let .eating(text), let .sleeping(text), let .playing(text):
+                    output.category = text
+                }
                 return
             }
 
             state.pictureMemory = pictureMemory
+            switch pictureMemory.theme.category {
+            case let .eating(text), let .sleeping(text), let .playing(text):
+                output.category = text
+            }
             output.question = pictureMemory.theme.question
             output.answer = pictureMemory.theme.answer
             output.takenImage = pictureMemory.image
@@ -81,6 +90,7 @@ public enum HomeViewStreamModel {
     }
 
     public struct Output {
+        public var category: String
         public var dateLabel: String
         public var takenImage: UIImage?
         public var question: String?
@@ -101,7 +111,7 @@ extension HomeViewStream {
     public static let shared = HomeViewStream(pictureMemoryRepository: PictureMemoryRepository.shared)
 
     public static let initialTheme = Theme(
-        category: .playing("猫が落ちてきました"),
+        category: .playing("#猫が落ちてきました"),
         question: "あなたは今どんな気分",
         answer: ""
     )
