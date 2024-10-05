@@ -26,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06E11ADC2CB158BF004B51A6 /* AndCat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AndCat.entitlements; sourceTree = "<group>"; };
 		F2226DE72CB110930075CBB4 /* AndCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2226DEA2CB110930075CBB4 /* AndCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndCatApp.swift; sourceTree = "<group>"; };
 		F2226DEE2CB110940075CBB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		F2226DE92CB110930075CBB4 /* AndCat */ = {
 			isa = PBXGroup;
 			children = (
+				06E11ADC2CB158BF004B51A6 /* AndCat.entitlements */,
 				F2226E062CB112880075CBB4 /* Domain */,
 				F2226E032CB112270075CBB4 /* Repository */,
 				F2226DF92CB111D80075CBB4 /* UseCase */,
@@ -357,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AndCat/AndCat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AndCat/Preview Content\"";
@@ -386,6 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AndCat/AndCat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AndCat/Preview Content\"";

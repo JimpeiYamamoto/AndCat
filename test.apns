@@ -1,0 +1,11 @@
+{
+    "Simulator Target Bundle": "com.yjim.AndCat",
+    "aps":{
+        "alert": {
+            "title": "今日の思い出を撮影しよう！",
+            "body": "今日のテーマ: #猫が液体になってる"
+        },
+        "sound":"default",
+        "badge":1
+    }
+}
