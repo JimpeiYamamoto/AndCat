@@ -145,11 +145,6 @@ struct MemorialView: View {
 
     var body: some View {
         VStack {
-            // タイトル
-            Text("メモリアル")
-                .font(.headline)
-                .fontWeight(.bold)
-
             // カテゴリー選択
             HStack(spacing: 5) {
                 ForEach(categories, id: \.self) { category in
@@ -192,6 +187,8 @@ struct MemorialView: View {
                     }
                 }
             }
+            .padding()
+            .background(Color.white) // 必要に応じてHStack全体の背景を白に設定
 
             Spacer()
 
