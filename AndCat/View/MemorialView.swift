@@ -111,7 +111,7 @@ struct MemorialView: View {
                             ZStack {
                                 // 背景色を持つ円を最背面に配置
                                 Circle()
-                                    .fill(selectedCategory == category ? Color(hex: "EFA98F").opacity(0.1) : Color.clear)
+                                    .fill(selectedCategory == category ? Color(hex: "EFA98F").opacity(0.2) : Color.clear)
                                     .frame(width: 60, height: 60)
 
                                 // 画像ボタン
@@ -170,9 +170,10 @@ struct MemorialView: View {
                         .font(.body)
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(Color(hex: "787878"))
                         .background(
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(.systemGray5))
+                                .fill(Color(hex: "DCE0E3"))
                         )
                 }
                 .padding() // 画像とテキスト全体にパディングを適用
@@ -184,7 +185,7 @@ struct MemorialView: View {
 
             Spacer()
         }
-        .background(Color(.systemGray6))
+        .background(Color(hex: "E6EAED"))
         .onAppear {
             // ビューが表示されたときにプログレスを開始
             Task {
