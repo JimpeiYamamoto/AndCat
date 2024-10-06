@@ -98,10 +98,15 @@ struct MonthlyCalendarView<Stream: CalendarViewStreamType>: View {
                                                 .stroke(.black, lineWidth: 2)
                                         )
                                 }
+                                Text("\(day)")
+                                    .foregroundStyle(.white)
+                                    .frame(width: 50, height: 50)
+                            } else {
+                                Text("\(day)")
+                                    .foregroundStyle(Color(hex: "0A3049"))
+                                    .frame(width: 50, height: 50)
+
                             }
-                            Text("\(day)")
-                                .foregroundStyle(Color(hex: "0A3049"))
-                                .frame(width: 50, height: 50)
                         }
                     }
                 }
