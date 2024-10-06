@@ -150,7 +150,7 @@ extension PictureMemoryRepository {
     func getDateList() -> [Date] {
         let dummyCount = 20
         let gap = 2
-        return (0..<dummyCount).compactMap { Calendar.current.date(byAdding: .day, value: -gap * $0, to: .now)}
+        return (1..<dummyCount).compactMap { Calendar.current.date(byAdding: .day, value: -gap * $0, to: .now)}
     }
 //    
 //    func getRandomImage() -> UIImage {
