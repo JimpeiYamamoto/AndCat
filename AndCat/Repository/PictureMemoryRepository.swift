@@ -211,7 +211,7 @@ extension PictureMemoryRepository {
     }
     
     func generateDataForSelfie() async -> [PictureMemory] {
-        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "selfie1")!, theme: .init(category: .selfie("#みんなでパシャリ"), question: "誰と一緒？", answer: "久しぶりに姉seと再会!❤️"))
+        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "selfie1")!, theme: .init(category: .selfie("#みんなでパシャリ"), question: "誰と一緒？", answer: "久しぶりに姉と再会!❤️"))
         return [dummy1]
     }
 }
