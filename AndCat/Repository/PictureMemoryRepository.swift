@@ -94,7 +94,6 @@ class PictureMemoryRepository: PictureMemoryRepositoryType {
         // Insert Dummy あとで消す
         Task {
 //            await insertDummyDataForDemo()
-//            await insertDummyDatas()
         }
     }
     
@@ -148,11 +147,11 @@ extension PictureMemoryRepository {
 //    
 //    // `gap`日 間隔で、`dummyCount`個の`Date`を返却する。(現在を基準に、`gap`日づつ遡る)
 //    // e.g. [today - gap * (dummyCount), today - gap * (dummyCount + 1), ..., today]
-//    func getDateList() -> [Date] {
-//        let dummyCount = 20
-//        let gap = 2
-//        return (0..<dummyCount).compactMap { Calendar.current.date(byAdding: .day, value: -gap * $0, to: .now)}
-//    }
+    func getDateList() -> [Date] {
+        let dummyCount = 20
+        let gap = 2
+        return (0..<dummyCount).compactMap { Calendar.current.date(byAdding: .day, value: -gap * $0, to: .now)}
+    }
 //    
 //    func getRandomImage() -> UIImage {
 //        let imageNames: [String] = ["cat","cat.fill", "cat.circle", "cat.circle.fill"]
