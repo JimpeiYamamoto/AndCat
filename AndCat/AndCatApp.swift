@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
         
+        let application = UIApplication.shared
+        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge], categories: nil))
+        application.applicationIconBadgeNumber = 0
+        
         ApplicationDelegate.shared.application(
             application,
             didFinishLaunchingWithOptions: launchOptions
