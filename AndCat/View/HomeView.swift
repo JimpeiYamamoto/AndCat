@@ -43,16 +43,35 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 .padding(.top)
 
                 HStack(spacing: 20) {
-                    secondSectionView(image: UIImage(named: "eating")!, title: "ごはん")
-                    secondSectionView(image: UIImage(named: "sleeping")!, title: "おひるね")
-                    secondSectionView(image: UIImage(named: "playing")!, title: "あそび")
+                    NavigationLink(destination: {
+                        CategoryHomeView(takenImage: $viewStream.output.takenImage, category: .eating(""))
+                    }, label: {
+                        secondSectionView(image: UIImage(named: "eating")!, title: "ごはん")
+                    })
+                    
+                    NavigationLink(destination: {
+                        CategoryHomeView(takenImage: $viewStream.output.takenImage, category: .sleeping(""))
+                    }, label: {
+                        secondSectionView(image: UIImage(named: "sleeping")!, title: "おひるね")
+                    })
+                    
+                    NavigationLink(destination: {
+                        CategoryHomeView(takenImage: $viewStream.output.takenImage, category: .playing(""))} , label: {
+                            secondSectionView(image: UIImage(named: "playing")!, title: "あそび")
+                        })
                 }
                 .padding(.bottom, 16)
                 .padding(.horizontal, 16)
 
                 HStack(spacing: 20) {
-                    secondSectionView(image: UIImage(named: "trouble")!, title: "トラブル")
-                    secondSectionView(image: UIImage(named: "selfie")!, title: "セルフィー")
+                    NavigationLink(destination: {
+                            CategoryHomeView(takenImage: $viewStream.output.takenImage, category: .trouble(""))} , label: {
+                        secondSectionView(image: UIImage(named: "trouble")!, title: "トラブル")
+                    })
+                    NavigationLink(destination: {
+                            CategoryHomeView(takenImage: $viewStream.output.takenImage, category: .selfie(""))} , label: {
+                        secondSectionView(image: UIImage(named: "selfie")!, title: "セルフィー")
+                    })
                     Spacer()
                 }
                 .padding(.horizontal, 16)
