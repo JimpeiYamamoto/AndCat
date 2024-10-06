@@ -93,7 +93,7 @@ class PictureMemoryRepository: PictureMemoryRepositoryType {
         
         // Insert Dummy あとで消す
         Task {
-            await insertDummyDataForDemo()
+//            await insertDummyDataForDemo()
 //            await insertDummyDatas()
         }
     }
@@ -139,37 +139,37 @@ extension PictureMemoryRepository {
 
 // MARK:  DummyDataを用意するテストメソッド。あとで消す
 extension PictureMemoryRepository {
-    func insertDummyDatas() async {
-        for date in getDateList() {
-            let dummy = PictureMemory(date: date, image: getRandomImage(), theme: getRandomTheme())
-            await save(dummy)
-        }
-    }
-    
-    // `gap`日 間隔で、`dummyCount`個の`Date`を返却する。(現在を基準に、`gap`日づつ遡る)
-    // e.g. [today - gap * (dummyCount), today - gap * (dummyCount + 1), ..., today]
-    func getDateList() -> [Date] {
-        let dummyCount = 20
-        let gap = 2
-        return (0..<dummyCount).compactMap { Calendar.current.date(byAdding: .day, value: -gap * $0, to: .now)}
-    }
-    
-    func getRandomImage() -> UIImage {
-        let imageNames: [String] = ["cat","cat.fill", "cat.circle", "cat.circle.fill"]
-        let imageName = imageNames.randomElement()!
-        return UIImage(systemName: imageName)!
-    }
-    
-    func getRandomTheme() -> Theme {
-        let themes: [Theme] = [
-            .init(category: .eating("eating"), question: "Q: Eating", answer: "A: Eating"),
-            .init(category: .playing("playing"), question: "Q: playing", answer: "A: playing"),
-            .init(category: .sleeping("sleeping"), question: "Q: sleeping", answer: "A: sleepgin"),
-            .init(category: .trouble("trouble"), question: "Q: trouble", answer: "A: trouble"),
-            .init(category: .selfie("selfie"), question: "Q: selfie", answer: "A: selfie")
-        ]
-        return themes.randomElement()!
-    }
+//    func insertDummyDatas() async {
+//        for date in getDateList() {
+//            let dummy = PictureMemory(date: date, image: getRandomImage(), theme: getRandomTheme())
+//            await save(dummy)
+//        }
+//    }
+//    
+//    // `gap`日 間隔で、`dummyCount`個の`Date`を返却する。(現在を基準に、`gap`日づつ遡る)
+//    // e.g. [today - gap * (dummyCount), today - gap * (dummyCount + 1), ..., today]
+//    func getDateList() -> [Date] {
+//        let dummyCount = 20
+//        let gap = 2
+//        return (0..<dummyCount).compactMap { Calendar.current.date(byAdding: .day, value: -gap * $0, to: .now)}
+//    }
+//    
+//    func getRandomImage() -> UIImage {
+//        let imageNames: [String] = ["cat","cat.fill", "cat.circle", "cat.circle.fill"]
+//        let imageName = imageNames.randomElement()!
+//        return UIImage(systemName: imageName)!
+//    }
+//    
+//    func getRandomTheme() -> Theme {
+//        let themes: [Theme] = [
+//            .init(category: .eating("eating"), question: "Q: Eating", answer: "A: Eating"),
+//            .init(category: .playing("playing"), question: "Q: playing", answer: "A: playing"),
+//            .init(category: .sleeping("sleeping"), question: "Q: sleeping", answer: "A: sleepgin"),
+//            .init(category: .trouble("trouble"), question: "Q: trouble", answer: "A: trouble"),
+//            .init(category: .selfie("selfie"), question: "Q: selfie", answer: "A: selfie")
+//        ]
+//        return themes.randomElement()!
+//    }
 }
 
 extension PictureMemoryRepository {
