@@ -92,9 +92,10 @@ class PictureMemoryRepository: PictureMemoryRepositoryType {
         
         
         // Insert Dummy あとで消す
-//        Task {
+        Task {
+//            await insertDummyDataForDemo()
 //            await insertDummyDatas()
-//        }
+        }
     }
     
     // firstDateとlastDateの間に作成されたデータを返却する
@@ -138,35 +139,80 @@ extension PictureMemoryRepository {
 
 // MARK:  DummyDataを用意するテストメソッド。あとで消す
 extension PictureMemoryRepository {
-    func insertDummyDatas() async {
-        for date in getDateList() {
-            let dummy = PictureMemory(date: date, image: getRandomImage(), theme: getRandomTheme())
-            await save(dummy)
+//    func insertDummyDatas() async {
+//        for date in getDateList() {
+//            let dummy = PictureMemory(date: date, image: getRandomImage(), theme: getRandomTheme())
+//            await save(dummy)
+//        }
+//    }
+//    
+//    // `gap`日 間隔で、`dummyCount`個の`Date`を返却する。(現在を基準に、`gap`日づつ遡る)
+//    // e.g. [today - gap * (dummyCount), today - gap * (dummyCount + 1), ..., today]
+//    func getDateList() -> [Date] {
+//        let dummyCount = 20
+//        let gap = 2
+//        return (0..<dummyCount).compactMap { Calendar.current.date(byAdding: .day, value: -gap * $0, to: .now)}
+//    }
+//    
+//    func getRandomImage() -> UIImage {
+//        let imageNames: [String] = ["cat","cat.fill", "cat.circle", "cat.circle.fill"]
+//        let imageName = imageNames.randomElement()!
+//        return UIImage(systemName: imageName)!
+//    }
+//    
+//    func getRandomTheme() -> Theme {
+//        let themes: [Theme] = [
+//            .init(category: .eating("eating"), question: "Q: Eating", answer: "A: Eating"),
+//            .init(category: .playing("playing"), question: "Q: playing", answer: "A: playing"),
+//            .init(category: .sleeping("sleeping"), question: "Q: sleeping", answer: "A: sleepgin"),
+//            .init(category: .trouble("trouble"), question: "Q: trouble", answer: "A: trouble"),
+//            .init(category: .selfie("selfie"), question: "Q: selfie", answer: "A: selfie")
+//        ]
+//        return themes.randomElement()!
+//    }
+}
+
+extension PictureMemoryRepository {
+    func insertDummyDataForDemo() async {
+        let eatingDummy = await generateDataForEating()
+        let playingDummy = await generateDataForPlaying()
+        let sleepginDummy = await generateDataForSleeping()
+    ()
+        let troubleDummy = await generateDataForTrouble()
+        let selfieDummy = await generateDataForSelfie()
+        
+        // Category毎の偏りがないように、randomに並び替える。日付は順番になるように更新する。
+        for (date, dummy) in zip(getDateList(), (eatingDummy + playingDummy + sleepginDummy + troubleDummy + selfieDummy).shuffled()) {
+            let aDummy = PictureMemory(date: date, image: dummy.image, theme: dummy.theme)
+            await save(aDummy)
         }
     }
     
-    // `gap`日 間隔で、`dummyCount`個の`Date`を返却する。(現在を基準に、`gap`日づつ遡る)
-    // e.g. [today - gap * (dummyCount), today - gap * (dummyCount + 1), ..., today]
-    func getDateList() -> [Date] {
-        let dummyCount = 20
-        let gap = 2
-        return (0..<dummyCount).compactMap { Calendar.current.date(byAdding: .day, value: -gap * $0, to: .now)}
+    func generateDataForEating() async -> [PictureMemory] {
+        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "eating1")!, theme: .init(category: .eating("#今日のお昼ご飯"), question: "何を食べたの？", answer: "大好きなカツオのキャットフード"))
+        let dummy2 = PictureMemory(date: .now, image: UIImage(named: "eating2")!, theme: .init(category: .eating("#ご褒美をあげよう"), question: "好きなご褒美は？", answer: "散歩の後の　Ciaoちゅーる　とりささみ"))
+        return [dummy1, dummy2]
     }
     
-    func getRandomImage() -> UIImage {
-        let imageNames: [String] = ["cat","cat.fill", "cat.circle", "cat.circle.fill"]
-        let imageName = imageNames.randomElement()!
-        return UIImage(systemName: imageName)!
+    func generateDataForSleeping() async -> [PictureMemory] {
+        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "sleeping1")!, theme: .init(category: .sleeping("#ラブラブ添い寝"), question: "寝心地はどうだった？", answer: "珍しく朝まで一緒に寝てくれた"))
+        let dummy2 = PictureMemory(date: .now, image: UIImage(named: "sleeping2")!, theme: .init(category: .sleeping("#居眠り激写"), question: "どんな表情だった？", answer: "赤ちゃんみたいに穏やかだった"))
+        return [dummy1, dummy2]
+    }
+    func generateDataForPlaying() async -> [PictureMemory] {
+        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "playing1")!, theme: .init(category: .playing("#なんか走ってる"), question: "何があった？", answer: "全力で虫を追ってた"))
+        let dummy2 = PictureMemory(date: .now, image: UIImage(named: "playing2")!, theme: .init(category: .playing("#溶けてた"), question: "場所はどこ？", answer: "縁側で気持ちよくなってた。溶けてた"))
+        return [dummy1, dummy2]
     }
     
-    func getRandomTheme() -> Theme {
-        let themes: [Theme] = [
-            .init(category: .eating("eating"), question: "Q: Eating", answer: "A: Eating"),
-            .init(category: .playing("playing"), question: "Q: playing", answer: "A: playing"),
-            .init(category: .sleeping("sleeping"), question: "Q: sleeping", answer: "A: sleepgin"),
-            .init(category: .trouble("trouble"), question: "Q: trouble", answer: "A: trouble"),
-            .init(category: .selfie("selfie"), question: "Q: selfie", answer: "A: selfie")
-        ]
-        return themes.randomElement()!
+    func generateDataForTrouble() async -> [PictureMemory] {
+        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "trouble1")!, theme: .init(category: .playing("#ご機嫌ななめ"), question: "何があった？", answer: "わからない、構ってくれない、、、"))
+        let dummy2 = PictureMemory(date: .now, image: UIImage(named: "trouble2")!, theme: .init(category: .playing("#スーパーうんちタイム"), question: "機嫌はどんな？", answer: "今日は元気もりもり"))
+        return [dummy1, dummy2]
+    }
+    
+    func generateDataForSelfie() async -> [PictureMemory] {
+        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "selfie1")!, theme: .init(category: .playing("#みんなでパシャリ"), question: "誰と一緒？", answer: "久しぶりに姉seと再会!❤️"))
+        return [dummy1]
     }
 }
