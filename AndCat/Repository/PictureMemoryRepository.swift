@@ -93,7 +93,7 @@ class PictureMemoryRepository: PictureMemoryRepositoryType {
         
         // Insert Dummy あとで消す
         Task {
-//            await insertDummyDataForDemo()
+            //await insertDummyDataForDemo()
         }
     }
     
@@ -205,13 +205,13 @@ extension PictureMemoryRepository {
     }
     
     func generateDataForTrouble() async -> [PictureMemory] {
-        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "trouble1")!, theme: .init(category: .playing("#ご機嫌ななめ"), question: "何があった？", answer: "わからない、構ってくれない、、、"))
-        let dummy2 = PictureMemory(date: .now, image: UIImage(named: "trouble2")!, theme: .init(category: .playing("#スーパーうんちタイム"), question: "機嫌はどんな？", answer: "今日は元気もりもり"))
+        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "trouble1")!, theme: .init(category: .trouble("#ご機嫌ななめ"), question: "何があった？", answer: "わからない、構ってくれない、、、"))
+        let dummy2 = PictureMemory(date: .now, image: UIImage(named: "trouble2")!, theme: .init(category: .trouble("#スーパーうんちタイム"), question: "機嫌はどんな？", answer: "今日は元気もりもり"))
         return [dummy1, dummy2]
     }
     
     func generateDataForSelfie() async -> [PictureMemory] {
-        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "selfie1")!, theme: .init(category: .playing("#みんなでパシャリ"), question: "誰と一緒？", answer: "久しぶりに姉seと再会!❤️"))
+        let dummy1 = PictureMemory(date: .now, image: UIImage(named: "selfie1")!, theme: .init(category: .selfie("#みんなでパシャリ"), question: "誰と一緒？", answer: "久しぶりに姉seと再会!❤️"))
         return [dummy1]
     }
 }
