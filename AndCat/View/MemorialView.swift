@@ -150,8 +150,8 @@ struct MemorialView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Image(uiImage: memory.image)
                         .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity, maxHeight: 300)
+                        .scaledToFill()  // 画像をフレームいっぱいに埋めるが、フレーム内で収まるように設定
+                        .frame(maxWidth: UIScreen.main.bounds.width - 16, maxHeight: 300)
                         .cornerRadius(12)
                         .clipped()
 
