@@ -13,6 +13,7 @@
 		06E11AEA2CB18668004B51A6 /* InstagramRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AE92CB18668004B51A6 /* InstagramRepository.swift */; };
 		06E11AF02CB1C022004B51A6 /* CalenderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AED2CB1C021004B51A6 /* CalenderUseCase.swift */; };
 		06E11AF12CB1C022004B51A6 /* PictureMemoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AEE2CB1C021004B51A6 /* PictureMemoryUseCase.swift */; };
+		06E11AF52CB212D1004B51A6 /* CategoryHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E11AF42CB212D1004B51A6 /* CategoryHomeView.swift */; };
 		4B7F006C2CB15D58004059A9 /* CalendarViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */; };
 		4B7F00702CB1A661004059A9 /* DateMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */; };
 		F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226DEA2CB110930075CBB4 /* AndCatApp.swift */; };
@@ -42,6 +43,7 @@
 		06E11AEB2CB192DB004B51A6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		06E11AED2CB1C021004B51A6 /* CalenderUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderUseCase.swift; sourceTree = "<group>"; };
 		06E11AEE2CB1C021004B51A6 /* PictureMemoryUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureMemoryUseCase.swift; sourceTree = "<group>"; };
+		06E11AF42CB212D1004B51A6 /* CategoryHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHomeView.swift; sourceTree = "<group>"; };
 		4B7F006B2CB15D58004059A9 /* CalendarViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewStream.swift; sourceTree = "<group>"; };
 		4B7F006F2CB1A661004059A9 /* DateMemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMemoryView.swift; sourceTree = "<group>"; };
 		F2226DE72CB110930075CBB4 /* AndCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				F2226E112CB12A450075CBB4 /* HomeView.swift */,
+				06E11AF42CB212D1004B51A6 /* CategoryHomeView.swift */,
 				F2226E1F2CB143950075CBB4 /* TakenResultView.swift */,
 				F2226E1E2CB143590075CBB4 /* HomeViewComponent */,
 				F2226DFB2CB111E10075CBB4 /* TopView.swift */,
@@ -287,6 +290,7 @@
 				F2226E142CB12A4C0075CBB4 /* CalendarView.swift in Sources */,
 				4B7F006C2CB15D58004059A9 /* CalendarViewStream.swift in Sources */,
 				F2226E0A2CB118F90075CBB4 /* PictureMemory.swift in Sources */,
+				06E11AF52CB212D1004B51A6 /* CategoryHomeView.swift in Sources */,
 				F2226E162CB12A600075CBB4 /* MemorialView.swift in Sources */,
 				F2226DEB2CB110930075CBB4 /* AndCatApp.swift in Sources */,
 				F2226E222CB17BAB0075CBB4 /* HomeViewStream.swift in Sources */,
@@ -471,7 +475,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AndCat/Preview Content\"";
-				DEVELOPMENT_TEAM = G9JXCB7X2L;
+				DEVELOPMENT_TEAM = XY3JGCC3JU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AndCat/Info.plist;
@@ -486,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yjim.AndCat2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yjim.AndCat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
