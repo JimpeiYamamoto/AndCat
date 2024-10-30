@@ -209,7 +209,7 @@ struct MemorialView: View {
     // 選択されたカテゴリーに応じてデータを読み込む関数
     func loadMemories(for category: String) async {
         // PictureMemoryRepositoryを使ってデータを読み込む
-        let repository = PictureMemoryRepository.shared
+        let repository = await PictureMemoryRepository.shared
         let categoryModel: Category
         switch category {
         case "eating":

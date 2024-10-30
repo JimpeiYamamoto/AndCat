@@ -78,5 +78,6 @@ public enum TakenResultViewStreamModel {
 }
 
 extension TakenResultViewStream {
+    @MainActor
     public static let shared = TakenResultViewStream(pictureMemoryRepository: PictureMemoryRepository.shared)
 }

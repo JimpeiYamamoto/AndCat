@@ -116,5 +116,6 @@ extension Category {
 }
 
 extension CalenderViewStream {
+    @MainActor
     public static let shared = CalenderViewStream(useCase: CalenderViewUseCase.shared)
 }

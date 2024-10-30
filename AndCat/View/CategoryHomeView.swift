@@ -134,18 +134,17 @@ extension CategoryHomeView {
     
     func prepareCategorys(for category: Category) -> [Category] {
         switch category {
-            case .eating(let string):
-                eatingCategory
-            case .sleeping(let string):
-                sleepginCategory
-            case .playing(let string):
-                playingCategory
-            case .trouble(let string):
-                troubleCategory
-            case .selfie(let string):
-                selfieCategory
+        case .eating:
+            eatingCategory
+        case .sleeping:
+            sleepginCategory
+        case .playing:
+            playingCategory
+        case .trouble:
+            troubleCategory
+        case .selfie:
+            selfieCategory
         }
-        
     }
     
     var eatingCategory: [Category] {
@@ -180,12 +179,5 @@ extension CategoryHomeView {
         [
             .selfie("#みんなでパシャリ")
         ]
-    }
-}
-
-
-#Preview {
-    NavigationStack {
-//        CategoryHomeView(category: .eating(""))
     }
 }

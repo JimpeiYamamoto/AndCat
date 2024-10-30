@@ -34,5 +34,6 @@ public enum CalenderViewUseCaseModel {
 }
 
 extension CalenderViewUseCase {
+    @MainActor
     public static let shared = CalenderViewUseCase(pictureMemoryRepository: PictureMemoryRepository.shared)
 }
