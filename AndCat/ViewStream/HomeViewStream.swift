@@ -8,10 +8,10 @@ where Output == HomeViewStreamModel.Output,
 {}
 
 public final class HomeViewStream: HomeViewStreamType {
-    private let pictureMemoryRepository: PictureMemoryRepositoryType
+    private let useCase: HomeViewUseCaseType
 
-    public init(pictureMemoryRepository: PictureMemoryRepositoryType) {
-        self.pictureMemoryRepository = pictureMemoryRepository
+    private init(useCase: HomeViewUseCaseType) {
+        self.useCase = useCase
     }
 
     @Published public var output = HomeViewStreamModel.Output(
@@ -30,7 +30,7 @@ public final class HomeViewStream: HomeViewStreamType {
         pictureMemory: .init(
             date: Date(),
             image: UIImage(),
-            theme: HomeViewStream.initialTheme
+            theme: Theme.initialTheme
         )
     )
 
@@ -42,57 +42,42 @@ public final class HomeViewStream: HomeViewStreamType {
 
         case .onAppear:
 
-            let now = Date()
-            let calendar = Calendar.current
-            let today = calendar.startOfDay(for: now)
-            let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
+            let displayResult = await Task.detached(priority: .background) { [useCase] in
+                await useCase.fetchTodayPictureMemory()
+            }.value
 
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "ja_JP")
-            dateFormatter.dateFormat = "M/d (E)"
-            let todayString = dateFormatter.string(from: today)
-
-            let _pictureMemory = await Task.detached(priority: .background) {
-                await self.pictureMemoryRepository.get(
-                    first: today,
-                    last: tomorrow
-                )
-            }.value.last
-
-            guard let pictureMemory = _pictureMemory else {
-                let category = switch HomeViewStream.initialTheme.category.self {
-                    case let .eating(text),
-                         let .sleeping(text),
-                         let .playing(text),
-                         let .selfie(text),
-                         let .trouble(text):
+            switch displayResult {
+            case .display(let pictureMemory):
+                let category = switch pictureMemory.category {
+                case let .eating(text),
+                    let .sleeping(text),
+                    let .playing(text),
+                    let .selfie(text),
+                    let .trouble(text):
                     text
                 }
                 output.todayThemeModel = .init(
                     category: category,
-                    dateLabel: todayString,
-                    takenImage: nil,
-                    question: HomeViewStream.initialTheme.question,
-                    answer: nil
+                    dateLabel: pictureMemory.date,
+                    takenImage: pictureMemory.takenImage,
+                    question: pictureMemory.question,
+                    answer: pictureMemory.answer
                 )
-                return
+                guard let takenImage = pictureMemory.takenImage,
+                      let question = pictureMemory.question,
+                      let answer = pictureMemory.answer else {
+                    return
+                }
+                state.pictureMemory = .init(
+                    date: Date(),
+                    image: takenImage,
+                    theme: .init(
+                        category: pictureMemory.category,
+                        question: question,
+                        answer: answer
+                    )
+                )
             }
-            let category =  switch pictureMemory.theme.category {
-                case let .eating(text),
-                     let .sleeping(text),
-                     let .playing(text),
-                     let .selfie(text),
-                     let .trouble(text):
-                text
-            }
-            output.todayThemeModel = .init(
-                category: category,
-                dateLabel: todayString,
-                takenImage: pictureMemory.image,
-                question: pictureMemory.theme.question,
-                answer: pictureMemory.theme.answer
-            )
-            state.pictureMemory = pictureMemory
 
         case .onCameraViewDisappear(let takenImage):
             guard let _ = takenImage else { return }
@@ -146,11 +131,5 @@ public enum HomeViewStreamModel {
 
 extension HomeViewStream {
     @MainActor
-    public static let shared = HomeViewStream(pictureMemoryRepository: PictureMemoryRepository.shared)
-
-    public static let initialTheme = Theme(
-        category: .playing("#猫が落ちてきました"),
-        question: "あなたは今どんな気分",
-        answer: ""
-    )
+    public static let shared = HomeViewStream(useCase: HomeViewUseCase.shared)
 }
