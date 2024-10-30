@@ -29,7 +29,7 @@ struct CalendarView: View {
                     VStack(spacing: 10) {
                         // 各月のカレンダーを表示
                         ForEach(pastYearMonths.reversed(), id: \.self) { month in
-                            MonthlyCalendarView(selectedDate: month, viewStream: CalenderViewStream.shared)
+                            MonthlyCalendarView(selectedDate: month, viewStream: CalendarViewStream.shared)
                         }
                     }
                     .padding(.horizontal, 10)
@@ -145,7 +145,7 @@ struct MonthlyCalendarView<Stream: CalendarViewStreamType>: View {
     }
     
     // 日付のDictを取得
-    var dateDict: Dictionary<Int, CalenderViewStreamModel.PictureMemory>? {
+    var dateDict: Dictionary<Int, CalendarViewStreamModel.PictureMemory>? {
         if let dateDict = viewStream.output.pictureMemoryDict[yearAndMonthInt] {
             return dateDict
         }

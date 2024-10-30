@@ -55,6 +55,7 @@ public final class HomeViewUseCase: HomeViewUseCaseType {
 
 public enum HomeViewUseCaseModel {
     public enum FetchResult {
+        // TODO: Errorの場合のcaseを追加する
         case display(PictureMemory)
 
         public struct PictureMemory {

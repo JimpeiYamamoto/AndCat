@@ -9,27 +9,27 @@ import Foundation
 import UIKit
 
 public protocol CalendarViewStreamType: ViewStreamType
-where Output == CalenderViewStreamModel.Output,
-      Input == CalenderViewStreamModel.Input,
-      State == CalenderViewStreamModel.State
+where Output == CalendarViewStreamModel.Output,
+      Input == CalendarViewStreamModel.Input,
+      State == CalendarViewStreamModel.State
 {}
 
-public final class CalenderViewStream: CalendarViewStreamType {
-    public var state = CalenderViewStreamModel.State()
-    private let useCase: CalenderViewUseCaseType
+public final class CalendarViewStream: CalendarViewStreamType {
+    public var state = CalendarViewStreamModel.State()
+    private let useCase: CalendarViewUseCaseType
 
-    @Published public var output = CalenderViewStreamModel.Output(
+    @Published public var output = CalendarViewStreamModel.Output(
         pictureMemoryDict: [:],
         isPresentLoadingView: true
     )
     
-    public init(useCase: CalenderViewUseCaseType) {
+    private init(useCase: CalendarViewUseCaseType) {
         self.useCase = useCase
     }
 
     @MainActor
     public func action(
-        input: CalenderViewStreamModel.Input
+        input: CalendarViewStreamModel.Input
     ) async {
         switch input {
         case .onAppear:
@@ -45,7 +45,7 @@ public final class CalenderViewStream: CalendarViewStreamType {
 
             switch fetchResult {
             case let .success(pictureMemoryList):
-                var yearAndMonthDict: Dictionary<Int, Dictionary<Int, CalenderViewStreamModel.PictureMemory>> = [:]
+                var yearAndMonthDict: Dictionary<Int, Dictionary<Int, CalendarViewStreamModel.PictureMemory>> = [:]
                 for pictureMemory in pictureMemoryList {
                     // 日付をIntに変換
                     let formatter = DateFormatter()
@@ -54,7 +54,7 @@ public final class CalenderViewStream: CalendarViewStreamType {
                     formatter.dateFormat = "dd"
                     let dateInt = Int(formatter.string(from: pictureMemory.date))!
                     
-                    let pictureMemory = CalenderViewStreamModel.PictureMemory(date: pictureMemory.date, image: pictureMemory.image, theme: pictureMemory.theme)
+                    let pictureMemory = CalendarViewStreamModel.PictureMemory(date: pictureMemory.date, image: pictureMemory.image, theme: pictureMemory.theme)
                     if var dict = yearAndMonthDict[yearAndMonthInt] {
                         dict.updateValue(pictureMemory, forKey: dateInt)
                         yearAndMonthDict.updateValue(dict, forKey: yearAndMonthInt)
@@ -69,7 +69,7 @@ public final class CalenderViewStream: CalendarViewStreamType {
     }
 }
 
-public enum CalenderViewStreamModel {
+public enum CalendarViewStreamModel {
     // viewからの得られるイベントを管理するenum
     public enum Input {
         case onAppear
@@ -94,7 +94,7 @@ public enum CalenderViewStreamModel {
     }
 }
 
-extension CalenderViewStreamModel {
+extension CalendarViewStreamModel {
     public struct PictureMemory {
         let date: Date
         let image: UIImage
@@ -115,7 +115,7 @@ extension Category {
     }
 }
 
-extension CalenderViewStream {
+extension CalendarViewStream {
     @MainActor
-    public static let shared = CalenderViewStream(useCase: CalenderViewUseCase.shared)
+    public static let shared = CalendarViewStream(useCase: CalendarViewUseCase.shared)
 }

@@ -9,13 +9,13 @@ import SwiftUI
 
 struct DateMemoryView: View {
     
-    private let pictureMemory: CalenderViewStreamModel.PictureMemory
+    private let pictureMemory: CalendarViewStreamModel.PictureMemory
     private let navigationTitle: String
     private let navigationSubTitle: String
     
     @State private var rect: CGRect = .zero
     
-    init(pictureMemory: CalenderViewStreamModel.PictureMemory) {
+    init(pictureMemory: CalendarViewStreamModel.PictureMemory) {
         self.pictureMemory = pictureMemory
         
         // 日付をフォーマット
@@ -124,6 +124,6 @@ extension UIImage {
 }
 
 #Preview {
-    let pictureMemory = CalenderViewStreamModel.PictureMemory(date: Date(), image: UIImage(systemName: "cat")!, theme: .init(category: .eating("eating"), question: "Q: Eating", answer: "A: Eating"))
+    let pictureMemory = CalendarViewStreamModel.PictureMemory(date: Date(), image: UIImage(systemName: "cat")!, theme: .init(category: .eating("eating"), question: "Q: Eating", answer: "A: Eating"))
     return DateMemoryView(pictureMemory: pictureMemory)
 }
