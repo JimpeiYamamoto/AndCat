@@ -15,11 +15,13 @@ public final class HomeViewStream: HomeViewStreamType {
     }
 
     @Published public var output = HomeViewStreamModel.Output(
-        category: "",
-        dateLabel: "",
-        takenImage: nil,
-        question: nil,
-        answer: nil,
+        todayThemeModel: .init(
+            category: "",
+            dateLabel: "",
+            takenImage: nil,
+            question: nil,
+            answer: nil
+        ),
         isNavigationActive: false,
         shouldShowCameraView: false
     )
@@ -58,24 +60,38 @@ public final class HomeViewStream: HomeViewStreamType {
             }.value.last
 
             guard let pictureMemory = _pictureMemory else {
-                output.question = HomeViewStream.initialTheme.question
-                output.dateLabel = todayString
-                output.category =  switch HomeViewStream.initialTheme.category.self {
-                    case let .eating(text), let .sleeping(text), let .playing(text), let .selfie(text), let .trouble(text):
+                let category = switch HomeViewStream.initialTheme.category.self {
+                    case let .eating(text),
+                         let .sleeping(text),
+                         let .playing(text),
+                         let .selfie(text),
+                         let .trouble(text):
                     text
                 }
-                output.takenImage = nil
-                output.answer = nil
+                output.todayThemeModel = .init(
+                    category: category,
+                    dateLabel: todayString,
+                    takenImage: nil,
+                    question: HomeViewStream.initialTheme.question,
+                    answer: nil
+                )
                 return
             }
-            output.category =  switch pictureMemory.theme.category {
-                case let .eating(text), let .sleeping(text), let .playing(text), let .selfie(text) ,let .trouble(text):
+            let category =  switch pictureMemory.theme.category {
+                case let .eating(text),
+                     let .sleeping(text),
+                     let .playing(text),
+                     let .selfie(text),
+                     let .trouble(text):
                 text
             }
-            output.dateLabel = todayString
-            output.question = pictureMemory.theme.question
-            output.answer = pictureMemory.theme.answer
-            output.takenImage = pictureMemory.image
+            output.todayThemeModel = .init(
+                category: category,
+                dateLabel: todayString,
+                takenImage: pictureMemory.image,
+                question: pictureMemory.theme.question,
+                answer: pictureMemory.theme.answer
+            )
             state.pictureMemory = pictureMemory
 
         case .onCameraViewDisappear(let takenImage):
@@ -93,13 +109,31 @@ public enum HomeViewStreamModel {
     }
 
     public struct Output {
-        public var category: String
-        public var dateLabel: String
-        public var takenImage: UIImage?
-        public var question: String?
-        public var answer: String?
+        public var todayThemeModel: TodayThemeModel
         public var isNavigationActive: Bool
         public var shouldShowCameraView: Bool
+
+        public struct TodayThemeModel {
+            public var category: String
+            public var dateLabel: String
+            public var takenImage: UIImage?
+            public var question: String?
+            public var answer: String?
+
+            public init(
+                category: String,
+                dateLabel: String,
+                takenImage: UIImage?,
+                question: String?,
+                answer: String?
+            ) {
+                self.category = category
+                self.dateLabel = dateLabel
+                self.takenImage = takenImage
+                self.question = question
+                self.answer = answer
+            }
+        }
     }
 
     public struct State {

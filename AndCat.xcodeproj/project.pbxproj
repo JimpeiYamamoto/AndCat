@@ -33,6 +33,7 @@
 		F2226E222CB17BAB0075CBB4 /* HomeViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E212CB17BAB0075CBB4 /* HomeViewStream.swift */; };
 		F2226E242CB18AE60075CBB4 /* TakenResultViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E232CB18AE60075CBB4 /* TakenResultViewStream.swift */; };
 		F2226E262CB1A8DC0075CBB4 /* TopViewStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2226E252CB1A8DC0075CBB4 /* TopViewStream.swift */; };
+		F2D976A72CD2D5D500E3D52A /* HomeViewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D976A62CD2D5D500E3D52A /* HomeViewUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		F2226E212CB17BAB0075CBB4 /* HomeViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewStream.swift; sourceTree = "<group>"; };
 		F2226E232CB18AE60075CBB4 /* TakenResultViewStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenResultViewStream.swift; sourceTree = "<group>"; };
 		F2226E252CB1A8DC0075CBB4 /* TopViewStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewStream.swift; sourceTree = "<group>"; };
+		F2D976A62CD2D5D500E3D52A /* HomeViewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				06E11AED2CB1C021004B51A6 /* CalenderUseCase.swift */,
+				F2D976A62CD2D5D500E3D52A /* HomeViewUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06E11AEA2CB18668004B51A6 /* InstagramRepository.swift in Sources */,
+				F2D976A72CD2D5D500E3D52A /* HomeViewUseCase.swift in Sources */,
 				F2226E0C2CB119170075CBB4 /* Theme.swift in Sources */,
 				F2226E022CB111E70075CBB4 /* ViewStremType.swift in Sources */,
 				F2226E202CB143950075CBB4 /* TakenResultView.swift in Sources */,

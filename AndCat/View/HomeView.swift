@@ -45,32 +45,50 @@ struct HomeView<Stream: HomeViewStreamType>: View {
 
                 HStack(spacing: 20) {
                     NavigationLink(destination: {
-                        CategoryHomeView(takenImage: $viewStream.output.takenImage, category: .eating(""))
+                        CategoryHomeView(
+                            takenImage: $viewStream.output.todayThemeModel.takenImage,
+                            category: .eating("")
+                        )
                     }, label: {
                         secondSectionView(image: UIImage(named: "eating")!, title: "ごはん")
                     })
-                    
+
                     NavigationLink(destination: {
-                        CategoryHomeView(takenImage: $viewStream.output.takenImage, category: .sleeping(""))
+                        CategoryHomeView(
+                            takenImage: $viewStream.output.todayThemeModel.takenImage,
+                            category: .sleeping("")
+                        )
                     }, label: {
                         secondSectionView(image: UIImage(named: "sleeping")!, title: "おひるね")
                     })
                     
                     NavigationLink(destination: {
-                        CategoryHomeView(takenImage: $viewStream.output.takenImage, category: .playing(""))} , label: {
-                            secondSectionView(image: UIImage(named: "playing")!, title: "あそび")
-                        })
+                        CategoryHomeView(
+                            takenImage: $viewStream.output.todayThemeModel.takenImage,
+                            category: .playing("")
+                        )
+                    }, label: {
+                        secondSectionView(image: UIImage(named: "playing")!, title: "あそび")
+                    })
                 }
                 .padding(.bottom, 16)
                 .padding(.horizontal, 16)
 
                 HStack(spacing: 20) {
                     NavigationLink(destination: {
-                            CategoryHomeView(takenImage: $viewStream.output.takenImage, category: .trouble(""))} , label: {
+                        CategoryHomeView(
+                            takenImage: $viewStream.output.todayThemeModel.takenImage,
+                            category: .trouble("")
+                        )
+                    }, label: {
                         secondSectionView(image: UIImage(named: "trouble")!, title: "トラブル")
                     })
                     NavigationLink(destination: {
-                            CategoryHomeView(takenImage: $viewStream.output.takenImage, category: .selfie(""))} , label: {
+                        CategoryHomeView(
+                            takenImage: $viewStream.output.todayThemeModel.takenImage,
+                            category: .selfie("")
+                        )
+                    }, label: {
                         secondSectionView(image: UIImage(named: "selfie")!, title: "セルフィー")
                     })
                     Spacer()
@@ -92,7 +110,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                                         answer: ""
                                     )
                                 ),
-                                dateLabel: viewStream.output.dateLabel
+                                dateLabel: viewStream.output.todayThemeModel.dateLabel
                             )
                         ),
                         isActive: $viewStream.output.isNavigationActive
@@ -140,19 +158,19 @@ struct HomeView<Stream: HomeViewStreamType>: View {
         VStack(alignment: .center, spacing: 16) {
             HStack {
                 Spacer()
-                Text(viewStream.output.dateLabel)
+                Text(viewStream.output.todayThemeModel.dateLabel)
                     .foregroundStyle(Color(hex: "0A3049"))
                     .padding(.top, 16)
                 Spacer()
             }
             .padding(.horizontal, 16)
 
-            Text(viewStream.output.category)
+            Text(viewStream.output.todayThemeModel.category)
                 .foregroundStyle(Color(hex: "0A3049"))
                 .bold()
-                .padding(.bottom, viewStream.output.takenImage == nil ? 16 : 0)
+                .padding(.bottom, viewStream.output.todayThemeModel.takenImage == nil ? 16 : 0)
 
-            if let takenImage = viewStream.output.takenImage {
+            if let takenImage = viewStream.output.todayThemeModel.takenImage {
                 Image(uiImage: takenImage)
                     .resizable()
                     .scaledToFit()
@@ -160,7 +178,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                     .padding(.horizontal, 16)
             }
 
-            if let answer = viewStream.output.answer {
+            if let answer = viewStream.output.todayThemeModel.answer {
                 HStack {
                     Text(answer)
                         .foregroundStyle(Color(type: .captionGray))
@@ -171,7 +189,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 }
             }
 
-            if viewStream.output.answer != nil {
+            if viewStream.output.todayThemeModel.answer != nil {
                 Button(action: {
                     Task {
                         await viewStream.action(input: .didTapThemeView)
