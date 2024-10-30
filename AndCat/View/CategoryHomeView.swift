@@ -96,7 +96,7 @@ struct CategoryHomeView: View {
             }
         }
         .fullScreenCover(isPresented: $isCameraPresented) {
-            CameraView(image: $takenImage)
+            CameraView(outputImage: $takenImage)
                 .onDisappear {
                     if takenImage != nil {
                         self.takenImage = takenImage

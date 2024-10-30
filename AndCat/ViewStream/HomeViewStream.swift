@@ -8,14 +8,6 @@ where Output == HomeViewStreamModel.Output,
 {}
 
 public final class HomeViewStream: HomeViewStreamType {
-    public var state = HomeViewStreamModel.State(
-        pictureMemory: .init(
-            date: Date(),
-            image: UIImage(),
-            theme: HomeViewStream.initialTheme
-        )
-    )
-
     private let pictureMemoryRepository: PictureMemoryRepositoryType
 
     public init(pictureMemoryRepository: PictureMemoryRepositoryType) {
@@ -30,6 +22,14 @@ public final class HomeViewStream: HomeViewStreamType {
         answer: nil,
         isNavigationActive: false,
         shouldShowCameraView: false
+    )
+
+    public var state = HomeViewStreamModel.State(
+        pictureMemory: .init(
+            date: Date(),
+            image: UIImage(),
+            theme: HomeViewStream.initialTheme
+        )
     )
 
     @MainActor
@@ -50,7 +50,6 @@ public final class HomeViewStream: HomeViewStreamType {
             dateFormatter.dateFormat = "M/d (E)"
             let todayString = dateFormatter.string(from: today)
 
-            output.dateLabel = todayString
             let pictureMemory = await Task.detached(priority: .background) {
                 await self.pictureMemoryRepository.get(
                     first: today,
@@ -72,11 +71,13 @@ public final class HomeViewStream: HomeViewStreamType {
                 case let .eating(text), let .sleeping(text), let .playing(text), let .selfie(text) ,let .trouble(text):
                 output.category = text
             }
+            output.dateLabel = todayString
             output.question = pictureMemory.theme.question
             output.answer = pictureMemory.theme.answer
             output.takenImage = pictureMemory.image
 
-        case .onCameraViewDisappear:
+        case .onCameraViewDisappear(let takenImage):
+            guard let _ = takenImage else { return }
             output.isNavigationActive.toggle()
         }
     }
@@ -86,7 +87,7 @@ public enum HomeViewStreamModel {
     public enum Input {
         case onAppear
         case didTapThemeView
-        case onCameraViewDisappear
+        case onCameraViewDisappear(takenImage: UIImage?)
     }
 
     public struct Output {
@@ -108,6 +109,7 @@ public enum HomeViewStreamModel {
 }
 
 extension HomeViewStream {
+    @MainActor
     public static let shared = HomeViewStream(pictureMemoryRepository: PictureMemoryRepository.shared)
 
     public static let initialTheme = Theme(

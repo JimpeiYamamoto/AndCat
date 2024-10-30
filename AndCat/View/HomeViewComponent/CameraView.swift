@@ -2,12 +2,12 @@ import Foundation
 import SwiftUI
 
 public struct CameraView: UIViewControllerRepresentable {
-    @Binding private var image: UIImage?
+    @Binding private var outputImage: UIImage?
 
     @Environment(\.dismiss) private var dismiss
 
-    public init(image: Binding<UIImage?>) {
-        self._image = image
+    public init(outputImage: Binding<UIImage?>) {
+        self._outputImage = outputImage
     }
 
     public func makeCoordinator() -> Coordinator {
@@ -37,12 +37,13 @@ extension CameraView {
 
         public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let uiImage = info[.originalImage] as? UIImage {
-                self.parent.image = uiImage
+                self.parent.outputImage = uiImage
             }
             self.parent.dismiss()
         }
 
         public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            self.parent.outputImage = nil
             self.parent.dismiss()
         }
     }

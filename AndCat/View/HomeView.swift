@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView<Stream: HomeViewStreamType>: View {
     @StateObject var viewStream: Stream
+    @State var takenImage: UIImage? = nil
 
     public init(viewStream: Stream) {
         _viewStream = StateObject(wrappedValue: viewStream)
@@ -77,7 +78,7 @@ struct HomeView<Stream: HomeViewStreamType>: View {
                 .padding(.horizontal, 16)
 
                 // deprecatedでくやしい
-                if let takenImage = viewStream.output.takenImage {
+                if let takenImage = takenImage {
                     NavigationLink(
                         destination: TakenResultView(
                             viewStream: TakenResultViewStream.shared,
@@ -100,12 +101,10 @@ struct HomeView<Stream: HomeViewStreamType>: View {
             }
             .padding(.horizontal, 16)
             .fullScreenCover(isPresented: $viewStream.output.shouldShowCameraView) {
-                CameraView(image: $viewStream.output.takenImage)
+                CameraView(outputImage: $takenImage)
                     .onDisappear {
-                        if viewStream.output.takenImage != nil {
-                            Task {
-                                await viewStream.action(input: .onCameraViewDisappear)
-                            }
+                        Task {
+                            await viewStream.action(input: .onCameraViewDisappear(takenImage: takenImage))
                         }
                     }
             }
