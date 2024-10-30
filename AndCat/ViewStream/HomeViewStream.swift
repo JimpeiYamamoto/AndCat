@@ -50,31 +50,33 @@ public final class HomeViewStream: HomeViewStreamType {
             dateFormatter.dateFormat = "M/d (E)"
             let todayString = dateFormatter.string(from: today)
 
-            let pictureMemory = await Task.detached(priority: .background) {
+            let _pictureMemory = await Task.detached(priority: .background) {
                 await self.pictureMemoryRepository.get(
                     first: today,
                     last: tomorrow
                 )
             }.value.last
 
-            guard let pictureMemory = pictureMemory else {
+            guard let pictureMemory = _pictureMemory else {
                 output.question = HomeViewStream.initialTheme.question
-                switch HomeViewStream.initialTheme.category.self {
+                output.dateLabel = todayString
+                output.category =  switch HomeViewStream.initialTheme.category.self {
                     case let .eating(text), let .sleeping(text), let .playing(text), let .selfie(text), let .trouble(text):
-                    output.category = text
+                    text
                 }
+                output.takenImage = nil
+                output.answer = nil
                 return
             }
-
-            state.pictureMemory = pictureMemory
-            switch pictureMemory.theme.category {
+            output.category =  switch pictureMemory.theme.category {
                 case let .eating(text), let .sleeping(text), let .playing(text), let .selfie(text) ,let .trouble(text):
-                output.category = text
+                text
             }
             output.dateLabel = todayString
             output.question = pictureMemory.theme.question
             output.answer = pictureMemory.theme.answer
             output.takenImage = pictureMemory.image
+            state.pictureMemory = pictureMemory
 
         case .onCameraViewDisappear(let takenImage):
             guard let _ = takenImage else { return }
